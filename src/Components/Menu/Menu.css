@@ -1,0 +1,17 @@
+.menu__title {
+  display: flex;
+  height: 50px;
+  width: 20%;
+  background: #f1f1f1;
+  font-size: 10%;
+  font-weight: 300;
+}
+.menu__title-img {
+  margin-left: 15px;
+}
+.menu__title-name {
+  font-size: 25px;
+  font-weight: 500;
+  color: #454545;
+  margin: 12px 0px 0 20px;
+}
