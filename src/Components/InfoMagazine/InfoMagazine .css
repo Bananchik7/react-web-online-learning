@@ -1,0 +1,33 @@
+.content__info {
+  background: #f1f1f1;
+  padding: 0% 2% 3% 2%;
+}
+.content__info-subject {
+}
+.content__subject-info {
+  display: flex;
+}
+.content__info-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 1.9% 1% 1% 0%;
+}
+.content__info-date {
+  margin: 2.1% 0% 1% 5%;
+  font-size: 16px;
+}
+.content__info-select {
+  width: 10%;
+  height: 6%;
+  font-size: 15px;
+  text-align: center;
+  margin: 1.9% 1% 0% 1%;
+  border-radius: 10px;
+  color: #555555;
+  font-weight: 500;
+}
+.content__info-input {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #f1f1f1;
+}

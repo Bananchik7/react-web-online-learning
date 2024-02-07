@@ -1,5 +1,6 @@
 import "./App.css";
-import Content from "./Components/Content/Content";
+import ContentMagazine from "./Components/ContentMagazine/ContentMagazine";
+import ContentMenuMagazine from "./Components/ContentMenuMagazine/ContentMenuMagazine";
 import Header from "./Components/Header/Header";
 import Menu from "./Components/Menu/Menu";
 
@@ -9,7 +10,10 @@ function App() {
       <Header />
       <div className="main">
         <Menu />
-        <Content />
+        <div className="content">
+          <ContentMenuMagazine />
+          <ContentMagazine />
+        </div>
       </div>
     </>
   );
