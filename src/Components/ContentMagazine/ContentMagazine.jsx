@@ -1,6 +1,6 @@
 import "./ContentMagazine.css";
 import TableMagazine from "../TableMagazine/TableMagazine";
-import InfoMagazine from "../InfoMagazine/InfoMagazine ";
+import InfoMagazine from "../InfoMagazine/InfoMagazine";
 
 export default function ContentMagazine() {
   return (

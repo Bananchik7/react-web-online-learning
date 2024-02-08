@@ -1,4 +1,4 @@
-import "./InfoMagazine .css";
+import "./InfoMagazine.css";
 
 export default function InfoMagazine() {
   return (

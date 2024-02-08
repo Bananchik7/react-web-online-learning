@@ -1,9 +1,9 @@
 import OptionMenuItem from "../OptionMenuMagazine/OptionMenuItem";
 import OptionMenuGroup from "../OptionMenuMagazine/OptionMenuGroup";
 import OptionMenuMonths from "../OptionMenuMagazine/OptionMenuMonth";
-import "./ContentMenuMagazine.css";
+import "./HeaderMagazine.css";
 
-export default function ContentMenuMagazine() {
+export default function HeaderMagazine() {
   return (
     <div className="content__header">
       <div className="content__header-option">
