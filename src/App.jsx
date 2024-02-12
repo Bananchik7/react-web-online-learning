@@ -5,12 +5,12 @@ import Header from "./Components/Header/Header";
 import Menu from "./Components/Menu/Menu";
 import ContentTranslate from "./Components/ContentTranslate/ContentTranslate";
 import { useState } from "react";
-import ContentMaterials from "./Components/ContentMaterials/ContentMaterials";
-import ContentProgress from "./Components/ContentProgress/ContentProgress";
+import HeaderProgress from "./Components/HeaderProgress/HeaderProgress";
 import ContentHelp from "./Components/ContentHelp/ContentHelp";
+import HeaderMaterials from "./Components/HeaderMaterials/HeaderMaterials";
+import ContentProgress from "./Components/ContentProgress/ContentProgress";
 
 function App() {
-  //const [visible, setVisible] = useState(true);
   const [tab, setTab] = useState("magazine");
 
   return (
@@ -32,11 +32,12 @@ function App() {
         )}
         {tab === "materials" && (
           <div className="materials">
-            <ContentMaterials />
+            <HeaderMaterials />
           </div>
         )}
         {tab === "progress" && (
           <div className="progress">
+            <HeaderProgress />
             <ContentProgress />
           </div>
         )}
