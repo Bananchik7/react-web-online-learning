@@ -7,6 +7,7 @@
   background: #f1f1f1;
   font-size: 10%;
   font-weight: 300;
+  border-right: 1px solid #b1b1b1;
 }
 .menu__title-img {
   margin-left: 15px;

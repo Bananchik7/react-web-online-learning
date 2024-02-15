@@ -1,3 +1,4 @@
+import ModalAuthorization from "../ModalAuthorization/ModalAuthorization";
 import "./ButtonExit.css";
 
 export default function ButtonExit() {
