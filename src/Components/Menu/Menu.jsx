@@ -9,11 +9,11 @@ export default function Menu({ active, onChange }) {
   //  setMenuType(type);
   //}
   return (
-    <div className="menu">
-      <div className="menu__title">
+    <section className="menu">
+      <article className="menu__title">
         <img className="menu__title-img" src="./menu.png" alt="menu" />
         <p className="menu__title-name">МЕНЮ</p>
-      </div>
+      </article>
       <ButtonMenu
         isActive={active === "magazine"}
         onClick={() => onChange("magazine")}
@@ -41,6 +41,6 @@ export default function Menu({ active, onChange }) {
       <ButtonMenu isActive={active === "help"} onClick={() => onChange("help")}>
         Поддержка
       </ButtonMenu>
-    </div>
+    </section>
   );
 }
