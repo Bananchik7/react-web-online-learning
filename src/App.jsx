@@ -6,11 +6,13 @@ import Register from "./Pages/Register";
 
 function App() {
   return (
-    <Routes>
-      <Route exact path="/" components={Home} />
-      <Route exact path="/login" components={Login} />
-      <Route exact path="/regixter" components={Register} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </>
   );
 }
 

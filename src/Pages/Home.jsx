@@ -12,40 +12,41 @@ import ContentProgress from "../Components/ContentProgress/ContentProgress";
 
 export default function Home() {
   const [tab, setTab] = useState("magazine");
-  return;
-  <>
-    {/*<Redirect to="login"></Redirect>*/}
-    <Header />
+  return (
+    <>
+      {/*<Redirect to="/login"></Redirect>*/}
+      <Header />
 
-    <main className="main">
-      <Menu active={tab} onChange={(current) => setTab(current)} />
-      {tab === "magazine" && (
-        <aside className="magazine">
-          <HeaderMagazine />
-          <ContentMagazine />
-        </aside>
-      )}
-      {tab === "translate" && (
-        <aside className="translate">
-          <ContentTranslate />
-        </aside>
-      )}
-      {tab === "materials" && (
-        <aside className="materials">
-          <HeaderMaterials />
-        </aside>
-      )}
-      {tab === "progress" && (
-        <aside className="progress">
-          <HeaderProgress />
-          <ContentProgress />
-        </aside>
-      )}
-      {tab === "help" && (
-        <aside className="help">
-          <ContentHelp />
-        </aside>
-      )}
-    </main>
-  </>;
+      <main className="main">
+        <Menu active={tab} onChange={(current) => setTab(current)} />
+        {tab === "magazine" && (
+          <aside className="magazine">
+            <HeaderMagazine />
+            <ContentMagazine />
+          </aside>
+        )}
+        {tab === "translate" && (
+          <aside className="translate">
+            <ContentTranslate />
+          </aside>
+        )}
+        {tab === "materials" && (
+          <aside className="materials">
+            <HeaderMaterials />
+          </aside>
+        )}
+        {tab === "progress" && (
+          <aside className="progress">
+            <HeaderProgress />
+            <ContentProgress />
+          </aside>
+        )}
+        {tab === "help" && (
+          <aside className="help">
+            <ContentHelp />
+          </aside>
+        )}
+      </main>
+    </>
+  );
 }
