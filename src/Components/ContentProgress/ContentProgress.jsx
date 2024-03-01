@@ -1,5 +1,5 @@
 import TableProgress from "../TableProgress/TableProgress";
-import "../ContentMagazine/ContentMagazine.css";
+import "../ContentProgress/ContentProgress.css";
 
 export default function ContentProgress() {
   return (

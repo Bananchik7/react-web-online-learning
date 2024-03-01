@@ -1,4 +1,4 @@
-import { items } from "../Database/Items";
+import { items } from "../../Database/Items";
 
 export default function OptionMenuItem() {
   const lastItem = items.map((item) => {

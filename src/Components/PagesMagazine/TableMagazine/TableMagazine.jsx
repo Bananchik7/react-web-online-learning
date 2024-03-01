@@ -1,5 +1,5 @@
 import "./TableMagazine.css";
-import { students } from "../Database/Students";
+import { students } from "../../Database/Students";
 
 export default function TableMagazine() {
   const rows = students.map(function (item) {

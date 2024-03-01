@@ -1,4 +1,4 @@
-import "../HeaderMagazine/HeaderMagazine.css";
+import "../PagesMagazine/HeaderMagazine/HeaderMagazine.css";
 import OptionMenuItem from "../OptionMenuMaterials/OptionMenuItem";
 import OptionMenuGroup from "../OptionMenuMaterials/OptionMenuGroup";
 import OptionMenuMonth from "../OptionMenuMaterials/OptionMenuMonth";

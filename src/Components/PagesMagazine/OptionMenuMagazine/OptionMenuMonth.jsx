@@ -1,4 +1,4 @@
-import { months } from "../Database/Months";
+import { months } from "../../Database/Months";
 
 export default function OptionMenuMonths() {
   const lastMonth = months.map((month) => {

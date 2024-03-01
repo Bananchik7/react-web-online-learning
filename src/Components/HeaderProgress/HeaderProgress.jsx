@@ -1,4 +1,4 @@
-import "../HeaderMagazine/HeaderMagazine";
+import "../PagesMagazine/HeaderMagazine/HeaderMagazine";
 import OptionMenuGroup from "../OptionMenuProgress/OptionMenuGroup";
 import OptionMenuItem from "../OptionMenuProgress/OptionMenuItem";
 

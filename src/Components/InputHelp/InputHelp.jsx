@@ -14,7 +14,7 @@ export default function InputHelp() {
         name="TextHelp"
         placeholder="Введите сообщение..."
       ></textarea>
-      <button type="submit" lassName="help__input-button">
+      <button type="submit" className="help__input-button">
         Отправить
       </button>
     </form>

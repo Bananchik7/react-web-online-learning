@@ -1,4 +1,4 @@
-import { groups } from "../Database/Groups";
+import { groups } from "../../Database/Groups";
 
 export default function OptionMenuGroup() {
   const lastGroup = groups.map((group) => {

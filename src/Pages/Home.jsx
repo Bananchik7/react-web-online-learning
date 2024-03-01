@@ -1,7 +1,5 @@
-//import { Redirect } from "react-router-dom";
-import ContentMagazine from "../Components/ContentMagazine/ContentMagazine";
-import HeaderMagazine from "../Components/HeaderMagazine/HeaderMagazine";
-import Header from "../Components/Header/Header";
+import ContentMagazine from "../Components/PagesMagazine/ContentMagazine/ContentMagazine";
+import HeaderMagazine from "../Components/PagesMagazine/HeaderMagazine/HeaderMagazine";
 import Menu from "../Components/Menu/Menu";
 import ContentTranslate from "../Components/ContentTranslate/ContentTranslate";
 import { useState } from "react";
@@ -14,9 +12,6 @@ export default function Home() {
   const [tab, setTab] = useState("magazine");
   return (
     <>
-      {/*<Redirect to="/login"></Redirect>*/}
-      <Header />
-
       <main className="main">
         <Menu active={tab} onChange={(current) => setTab(current)} />
         {tab === "magazine" && (
