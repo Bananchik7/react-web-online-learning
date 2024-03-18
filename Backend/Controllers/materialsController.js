@@ -29,7 +29,20 @@ class MaterialsController {
       next(ApiError.badRequest(e.message));
     }
   }
-  async getAll(req, res) {}
+  async getAll(req, res) {
+    const { GroupID, ItemID, MonthID } = req.query;
+    let material;
+    if (!GroupID && !ItemID && !MonthID) {
+      material = await Materials.findAll({
+        where: {
+          GroupID: 1,
+          ItemID: 1,
+          MonthID: 1,
+        },
+      });
+    }
+    return res.json(material);
+  }
   async patch(req, res) {}
   async delete(req, res) {}
 }

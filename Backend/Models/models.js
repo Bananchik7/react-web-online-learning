@@ -42,6 +42,15 @@ const Materials = sequelize.define("Materials", {
   File: {
     type: DataTypes.STRING,
   },
+  GroupID: {
+    type: DataTypes.INTEGER,
+  },
+  ItemID: {
+    type: DataTypes.INTEGER,
+  },
+  MonthID: {
+    type: DataTypes.INTEGER,
+  },
 });
 
 const GroupStudents = sequelize.define("GroupStudents", {
@@ -125,35 +134,35 @@ const Students = sequelize.define("Students", {
   },
 });
 
-Materials.hasOne(GroupStudents, {
-  foreignKey: "GroupID",
-});
-GroupStudents.belongsTo(Materials);
+//Materials.hasOne(GroupStudents, {
+//  foreignKey: "GroupID",
+//});
+//GroupStudents.belongsTo(Materials);
 
-Materials.hasOne(Items, {
-  foreignKey: "ItemID",
-});
-Items.belongsTo(Materials);
+//Materials.hasOne(Items, {
+//  foreignKey: "ItemID",
+//});
+//Items.belongsTo(Materials);
 
-Materials.hasOne(Months, {
-  foreignKey: "MonthID",
-});
-Months.belongsTo(Materials);
+//Materials.hasOne(Months, {
+//  foreignKey: "MonthID",
+//});
+//Months.belongsTo(Materials);
 
-TopicInfos.hasOne(Items);
-Items.belongsTo(TopicInfos);
+//TopicInfos.hasOne(Items);
+//Items.belongsTo(TopicInfos);
 
-TopicInfos.hasOne(GroupStudents);
-GroupStudents.belongsTo(TopicInfos);
+//TopicInfos.hasOne(GroupStudents);
+//GroupStudents.belongsTo(TopicInfos);
 
-Grades.hasOne(Students);
-Students.belongsTo(Grades);
+//Grades.hasOne(Students);
+//Students.belongsTo(Grades);
 
-Grades.hasOne(Items);
-Items.belongsTo(Grades);
+//Grades.hasOne(Items);
+//Items.belongsTo(Grades);
 
-Students.hasOne(GroupStudents);
-GroupStudents.belongsTo(Students);
+//Students.hasOne(GroupStudents);
+//GroupStudents.belongsTo(Students);
 
 module.exports = {
   Accounts,
