@@ -1,7 +1,10 @@
 import "./Header.css";
 import ButtonExit from "../ButtonExit/ButtonExit";
+import React, { useContext } from "react";
+import { Context } from "../../index.js";
 
 export default function Header() {
+  const { user } = useContext(Context);
   return (
     <header>
       <div className="header__logo">

@@ -7,11 +7,13 @@ import HeaderProgress from "../Components/HeaderProgress/HeaderProgress";
 import ContentHelp from "../Components/ContentHelp/ContentHelp";
 import HeaderMaterials from "../Components/HeaderMaterials/HeaderMaterials";
 import ContentProgress from "../Components/ContentProgress/ContentProgress";
+import Header from "../Components/Header/Header";
 
 export default function Home() {
   const [tab, setTab] = useState("magazine");
   return (
     <>
+      <Header />
       <main className="main">
         <Menu active={tab} onChange={(current) => setTab(current)} />
         {tab === "magazine" && (

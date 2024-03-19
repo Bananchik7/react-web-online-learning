@@ -3,15 +3,6 @@ const { DataTypes } = require("sequelize");
 
 const Accounts = sequelize.define("Accounts", {
   AccountID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  LastName: {
-    type: DataTypes.STRING,
-  },
-  FirstName: {
-    type: DataTypes.STRING,
-  },
-  SurName: {
-    type: DataTypes.STRING,
-  },
   LoginAccount: {
     type: DataTypes.STRING,
     unique: true,

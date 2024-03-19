@@ -1,20 +1,29 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
-import Login from "./Pages/Login";
-import Register from "./Pages/Register";
-import Header from "./Components/Header/Header";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
+import { authRoutes, publicRoutes } from "./routes.js";
+import { LOGIN_ROUTE } from "./Utils/consts.js";
+import { useContext } from "react";
+import { Context } from "./index.js";
 
 function App() {
+  const { user } = useContext(Context);
+  console.log(user);
   return (
-    <>
-      <Header />
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {user.isAuth === true &&
+          authRoutes.map(({ path, Component }) => (
+            <Route key={path} path={path} element={<Component />} exact />
+          ))}
+        {publicRoutes.map(({ path, Component }) => (
+          <Route key={path} path={path} element={<Component />} exact />
+        ))}
+        <Route
+          path="*"
+          element={<Navigate to={LOGIN_ROUTE} replace={true} />}
+        />
       </Routes>
-    </>
+    </BrowserRouter>
   );
 }
 
