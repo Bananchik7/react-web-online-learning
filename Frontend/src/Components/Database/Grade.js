@@ -1,6 +1,7 @@
-export const grade = [{
+export const grade = [
+  {
     id: 1,
-    number:
-    grade:
-
-}]
+    number: 2,
+    grade: 1,
+  },
+];
