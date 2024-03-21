@@ -8,6 +8,7 @@ import ContentHelp from "../Components/ContentHelp/ContentHelp";
 import HeaderMaterials from "../Components/HeaderMaterials/HeaderMaterials";
 import ContentProgress from "../Components/ContentProgress/ContentProgress";
 import Header from "../Components/Header/Header";
+import ContentMaterials from "../Components/ContentMaterials/ContentMaterials";
 
 export default function Home() {
   const [tab, setTab] = useState("magazine");
@@ -30,6 +31,7 @@ export default function Home() {
         {tab === "materials" && (
           <aside className="materials">
             <HeaderMaterials />
+            <ContentMaterials />
           </aside>
         )}
         {tab === "progress" && (

@@ -1,6 +1,41 @@
-.material__form {
-  width: 80%;
-  height: 80%;
-  margin: 0 0 0 0;
+.loading__background {
+  width: 90%;
+  margin: 2% 0 0 4%;
   border: 1px solid #a0a0a0;
+}
+.loading__form {
+  margin: 2% 2% 2% 2%;
+}
+.loading__form-name {
+  color: #454545;
+  font-size: 17px;
+  border-bottom: 1px solid #a0a0a0;
+  padding-left: 2%;
+  padding-bottom: 0.5%;
+}
+.loading__form-files {
+  display: flex;
+  margin: 1% 0 0 3%;
+}
+.loading__files-video {
+  font-size: 15px;
+  margin-right: 10%;
+}
+.loading__files-pdf {
+  font-size: 15px;
+}
+.loading__button {
+  display: flex;
+  margin: 2% 0 0 15%;
+}
+.loading__button-add {
+  width: 17%;
+  height: 35px;
+  font-weight: 600;
+  font-size: 16px;
+  background: #f8f0ff;
+  border: 1px solid #a0a0a0;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px #b4b4b4;
+  margin-right: 20%;
 }

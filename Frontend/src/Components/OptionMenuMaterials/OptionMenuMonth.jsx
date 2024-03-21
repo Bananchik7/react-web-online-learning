@@ -1,8 +1,18 @@
-import { months } from "../Database/Months";
+import React, { useContext } from "react";
+import { observer } from "mobx-react-lite";
+import { Context } from "../../index.js";
 
-export default function OptionMenuMonths() {
-  const lastMonth = months.map((month) => {
-    return <option key={month.id}>{month.name}</option>;
-  });
-  return <select className="content__option-select">{lastMonth}</select>;
-}
+export const OptionMenuMonth = observer(() => {
+  const { content } = useContext(Context);
+  return (
+    <>
+      <select className="content__option-select">
+        {content.Months.map((item) => (
+          <option key={item.MonthID}>{item.Name}</option>
+        ))}
+      </select>
+    </>
+  );
+});
+
+export default OptionMenuMonth;

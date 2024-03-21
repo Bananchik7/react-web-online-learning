@@ -1,8 +1,18 @@
-import { items } from "../Database/Items";
+import React, { useContext } from "react";
+import { observer } from "mobx-react-lite";
+import { Context } from "../../index.js";
 
-export default function OptionMenuItem() {
-  const lastItem = items.map((item) => {
-    return <option key={item.id}>{item.name}</option>;
-  });
-  return <select className="content__option-select">{lastItem}</select>;
-}
+export const OptionMenuItem = observer(() => {
+  const { content } = useContext(Context);
+  return (
+    <>
+      <select className="content__option-select">
+        {content.Items.map((item) => (
+          <option key={item.ItemID}>{item.Name}</option>
+        ))}
+      </select>
+    </>
+  );
+});
+
+export default OptionMenuItem;
