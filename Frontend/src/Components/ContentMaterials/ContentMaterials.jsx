@@ -1,10 +1,12 @@
 import "./ContentMaterials.css";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index.js";
+import ModalAdd from "../Modals/ModalsMaterials.jsx";
 
 export const ContentMaterials = observer(() => {
   const { content } = useContext(Context);
+  const [AddVisible, setAddVisibale] = useState(false);
   return (
     <>
       <main className="loading">
@@ -20,9 +22,15 @@ export const ContentMaterials = observer(() => {
           ))}
         </section>
         <div className="loading__button">
-          <button className="loading__button-add">Добавить тему</button>
+          <button
+            onClick={() => setAddVisibale(true)}
+            className="loading__button-add"
+          >
+            Добавить тему
+          </button>
         </div>
       </main>
+      <ModalAdd show={AddVisible} onHide={() => setAddVisibale(false)} />
     </>
   );
 });

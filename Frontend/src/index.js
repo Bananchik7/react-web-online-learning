@@ -6,6 +6,7 @@ import UserAuth from "./Components/UserAuth.js";
 import MaterialsContent from "./Components/MaterialsInfo.js";
 
 export const Context = createContext(null);
+console.log(process.env.REACT_APP_ARI_URL);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
