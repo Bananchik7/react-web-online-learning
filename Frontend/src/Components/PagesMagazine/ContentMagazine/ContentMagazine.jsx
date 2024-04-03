@@ -4,9 +4,9 @@ import InfoMagazine from "../InfoMagazine/InfoMagazine";
 
 export default function ContentMagazine() {
   return (
-    <div className="content__main">
+    <section className="content__main">
       <TableMagazine />
       <InfoMagazine />
-    </div>
+    </section>
   );
 }

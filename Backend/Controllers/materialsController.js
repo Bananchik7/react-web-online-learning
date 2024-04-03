@@ -15,7 +15,7 @@ class MaterialsController {
       Video.mv(path.resolve(__dirname, "..", "Static", fileNameVideo));
       File.mv(path.resolve(__dirname, "..", "Static", fileNameFile));
 
-      const material = await Materials.create({
+      const materials = await Materials.create({
         Name,
         GroupID,
         ItemID,
@@ -24,16 +24,16 @@ class MaterialsController {
         File: fileNameFile,
       });
 
-      return res.json(material);
+      return res.json(materials);
     } catch (e) {
       next(ApiError.badRequest(e.message));
     }
   }
   async getAll(req, res) {
     const { GroupID, ItemID, MonthID } = req.query;
-    let material;
+    let materials;
     if (!GroupID && !ItemID && !MonthID) {
-      material = await Materials.findAll({
+      materials = await Materials.findAll({
         where: {
           GroupID: 1,
           ItemID: 1,
@@ -41,7 +41,7 @@ class MaterialsController {
         },
       });
     }
-    return res.json(material);
+    return res.json(materials);
   }
   async patch(req, res) {}
   async delete(req, res) {}

@@ -5,7 +5,7 @@ import "./HeaderMagazine.css";
 
 export default function HeaderMagazine() {
   return (
-    <div className="content__header">
+    <section className="content__header">
       <div className="content__header-option">
         <p className="content__option-title">Предмет:</p>
         <OptionMenuItem />
@@ -18,6 +18,6 @@ export default function HeaderMagazine() {
         <p className="content__option-title">Месяц:</p>
         <OptionMenuMonths />
       </div>
-    </div>
+    </section>
   );
 }

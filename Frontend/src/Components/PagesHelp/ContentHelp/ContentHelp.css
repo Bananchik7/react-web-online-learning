@@ -1,6 +1,7 @@
 .help {
   width: 78%;
   margin-left: 1.5%;
+  margin-top: 1%;
 }
 .help__title {
   font-weight: 600;
@@ -27,7 +28,7 @@
 }
 .help__input-subject {
   width: 60%;
-  height: 20px;
+  height: 35px;
   border-radius: 20px;
   border: 1px solid #a0a0a0;
   padding-left: 3%;

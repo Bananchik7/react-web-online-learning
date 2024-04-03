@@ -1,7 +1,8 @@
 import InputHelp from "../InputHelp/InputHelp";
 import "./ContentHelp.css";
+import { observer } from "mobx-react-lite";
 
-export default function ContentHelp() {
+const ContentHelp = observer(() => {
   return (
     <div className="help">
       <p className="help__title">Контакты:</p>
@@ -15,4 +16,6 @@ export default function ContentHelp() {
       <InputHelp />
     </div>
   );
-}
+});
+
+export default ContentHelp;

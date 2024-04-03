@@ -2,54 +2,8 @@ import { makeAutoObservable } from "mobx";
 
 export default class MaterialsContent {
   constructor() {
-    this._Materials = [
-      {
-        MaterialID: 1,
-        Name: "Учебник математики. Роль математики в жизни людей и общества.",
-        Video: "ffdc5c81-42ad-49a7-962c-a48f225b2d26.mp4",
-        File: "3720c4e3-8f16-4fb7-b82a-c312e17bcb46.docx",
-      },
-      {
-        MaterialID: 2,
-        Name: "БЗЗЗЗЗЗ",
-        Video: "ffdc5c81-42ad-49a7-962c-a48f225b2d26.mp4",
-        File: "3720c4e3-8f16-4fb7-b82a-c312e17bcb46.docx",
-      },
-    ];
-    this._GroupStudents = [
-      {
-        GroupID: 1,
-        Name: "1 А",
-      },
-      {
-        GroupID: 2,
-        Name: "2 А",
-      },
-      {
-        GroupID: 3,
-        Name: "3 А",
-      },
-      {
-        GroupID: 4,
-        Name: "4 А",
-      },
-      {
-        GroupID: 5,
-        Name: "1 Б",
-      },
-      {
-        GroupID: 6,
-        Name: "2 Б",
-      },
-      {
-        GroupID: 7,
-        Name: "3 Б",
-      },
-      {
-        GroupID: 8,
-        Name: "4 Б",
-      },
-    ];
+    this._Materials = [];
+    this._GroupStudents = [];
     this._Items = [
       {
         ItemID: 1,
@@ -98,6 +52,7 @@ export default class MaterialsContent {
         Name: "Июнь",
       },
     ];
+    this._selectedGroupStudents = {};
     makeAutoObservable(this);
   }
 
@@ -113,12 +68,24 @@ export default class MaterialsContent {
   setMonths(Months) {
     this._Months = Months;
   }
+
+  //
+  setSelectedGroupStudents(GroupStudents) {
+    this._selectedGroupStudents = GroupStudents;
+  }
+  //
   get Materials() {
     return this._Materials;
   }
   get GroupStudents() {
     return this._GroupStudents;
   }
+  //
+  get selectedGroupStudents() {
+    return this._selectedGroupStudents;
+  }
+  //
+
   get Items() {
     return this._Items;
   }

@@ -8,7 +8,6 @@ import { observer } from "mobx-react-lite";
 
 const App = observer(() => {
   const { user } = useContext(Context);
-  console.log(user);
   return (
     <BrowserRouter>
       <Routes>

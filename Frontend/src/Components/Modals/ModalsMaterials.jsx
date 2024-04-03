@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { Context } from "../../index.js";
 
 export default function ModalAdd({ show, onHide }) {
-  const { content } = useContext(Context);
+  const { material } = useContext(Context);
   return (
     <Modal show={show} onHide={onHide} size="lg" centered>
       <Modal.Header closeButton>
@@ -20,7 +20,7 @@ export default function ModalAdd({ show, onHide }) {
               Выберите месяц
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              {content.Months.map((item) => (
+              {material.Months.map((item) => (
                 <Dropdown.Item key={item.MonthID}>{item.Name}</Dropdown.Item>
               ))}
             </Dropdown.Menu>
@@ -30,7 +30,7 @@ export default function ModalAdd({ show, onHide }) {
               Выберите класс
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              {content.GroupStudents.map((item) => (
+              {material.GroupStudents.map((item) => (
                 <Dropdown.Item key={item.GroupID}>{item.Name}</Dropdown.Item>
               ))}
             </Dropdown.Menu>
@@ -40,7 +40,7 @@ export default function ModalAdd({ show, onHide }) {
               Выберите предмет
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              {content.Items.map((item) => (
+              {material.Items.map((item) => (
                 <Dropdown.Item key={item.ItemID}>{item.Name}</Dropdown.Item>
               ))}
             </Dropdown.Menu>

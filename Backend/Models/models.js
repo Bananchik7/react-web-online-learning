@@ -18,7 +18,7 @@ const Help = sequelize.define("Help", {
   TextHelp: { type: DataTypes.STRING },
 });
 
-const Materials = sequelize.define("Materials", {
+const Materials = sequelize.define("material", {
   MaterialID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -44,7 +44,7 @@ const Materials = sequelize.define("Materials", {
   },
 });
 
-const GroupStudents = sequelize.define("GroupStudents", {
+const GroupStudents = sequelize.define("group", {
   GroupID: {
     type: DataTypes.INTEGER,
     primaryKey: true,

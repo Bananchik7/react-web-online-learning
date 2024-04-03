@@ -4,15 +4,19 @@ import "./index.css";
 import App from "./App";
 import UserAuth from "./Components/UserAuth.js";
 import MaterialsContent from "./Components/MaterialsInfo.js";
+import HelpClass from "./Components/HelpClass.js";
 
 export const Context = createContext(null);
-console.log(process.env.REACT_APP_ARI_URL);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Context.Provider
-      value={{ user: new UserAuth(), content: new MaterialsContent() }}
+      value={{
+        user: new UserAuth(),
+        material: new MaterialsContent(),
+        help: new HelpClass(),
+      }}
     >
       <App />
     </Context.Provider>
