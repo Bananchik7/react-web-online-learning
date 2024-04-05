@@ -44,7 +44,7 @@ const Materials = sequelize.define("material", {
   },
 });
 
-const GroupStudents = sequelize.define("group", {
+const GroupStudents = sequelize.define("GroupStudents", {
   GroupID: {
     type: DataTypes.INTEGER,
     primaryKey: true,

@@ -3,16 +3,42 @@ import { useContext, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index.js";
 import ModalAdd from "../Modals/ModalsMaterials.jsx";
-import { fetchMaterials, fetchGroup } from "../../http/materialsAPI.js";
+import {
+  fetchMaterials,
+  fetchGroup,
+  fetchItem,
+  fetchMonth,
+} from "../../http/materialsAPI.js";
 
 export const ContentMaterials = observer(() => {
   const { material } = useContext(Context);
+
+  const handleChange = () => {
+    selectMaterials();
+  };
+
   const [AddVisible, setAddVisibale] = useState(false);
 
   useEffect(() => {
-    fetchMaterials().then((data) => material.setMaterials(data));
     fetchGroup().then((data) => material.setGroupStudents(data));
+    fetchItem().then((data) => material.setItems(data));
+    fetchMonth().then((data) => material.setMonths(data));
+    fetchMaterials().then((data) => {
+      material.setMaterials(data);
+    });
   }, []);
+
+  function selectMaterials() {
+    const SelectGroupID = document.getElementById("SelectGroupID");
+    const GroupID = SelectGroupID.options[SelectGroupID.selectedIndex].value;
+    const SelectItemID = document.getElementById("SelectItemID");
+    const ItemID = SelectItemID.options[SelectItemID.selectedIndex].value;
+    const SelectMonthID = document.getElementById("SelectMonthID");
+    const MonthID = SelectMonthID.options[SelectMonthID.selectedIndex].value;
+    fetchMaterials(GroupID, ItemID, MonthID).then((data) => {
+      material.setMaterials(data);
+    });
+  }
 
   return (
     <>
@@ -21,25 +47,46 @@ export const ContentMaterials = observer(() => {
           <div className="content__header">
             <div className="content__header-option">
               <p className="content__option-title">Предмет:</p>
-              <select className="content__option-select">
+              <select
+                id="SelectItemID"
+                defaultValue={"1"}
+                onChange={handleChange}
+                className="content__option-select"
+              >
                 {material.Items.map((item) => (
-                  <option key={item.ItemID}>{item.Name}</option>
+                  <option key={item.ItemID} value={item.ItemID}>
+                    {item.Name}
+                  </option>
                 ))}
               </select>
             </div>
             <div className="content__header-option">
               <p className="content__option-title">Класс:</p>
-              <select className="content__option-select">
+              <select
+                id="SelectGroupID"
+                defaultValue={"1"}
+                onChange={handleChange}
+                className="content__option-select"
+              >
                 {material.GroupStudents.map((item) => (
-                  <option key={item.GroupID}>{item.Name}</option>
+                  <option key={item.GroupID} value={item.GroupID}>
+                    {item.Name}
+                  </option>
                 ))}
               </select>
             </div>
             <div className="content__header-option">
               <p className="content__option-title">Месяц:</p>
-              <select className="content__option-select">
+              <select
+                id="SelectMonthID"
+                defaultValue={"1"}
+                onChange={handleChange}
+                className="content__option-select"
+              >
                 {material.Months.map((item) => (
-                  <option key={item.MonthID}>{item.Name}</option>
+                  <option key={item.MonthID} value={item.MonthID}>
+                    {item.Name}
+                  </option>
                 ))}
               </select>
             </div>

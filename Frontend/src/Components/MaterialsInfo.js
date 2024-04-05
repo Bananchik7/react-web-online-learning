@@ -4,55 +4,11 @@ export default class MaterialsContent {
   constructor() {
     this._Materials = [];
     this._GroupStudents = [];
-    this._Items = [
-      {
-        ItemID: 1,
-        Name: "Алгебра",
-      },
-      {
-        ItemID: 2,
-        Name: "Геометрия",
-      },
-      {
-        ItemID: 3,
-        Name: "Математика",
-      },
-      {
-        ItemID: 4,
-        Name: "Русский язык",
-      },
-      {
-        ItemID: 5,
-        Name: "Английский язык",
-      },
-    ];
-    this._Months = [
-      {
-        MonthID: 1,
-        Name: "Январь",
-      },
-      {
-        MonthID: 2,
-        Name: "Февраль",
-      },
-      {
-        MonthID: 3,
-        Name: "Март",
-      },
-      {
-        MonthID: 4,
-        Name: "Апрель",
-      },
-      {
-        MonthID: 5,
-        Name: "Май",
-      },
-      {
-        MonthID: 6,
-        Name: "Июнь",
-      },
-    ];
+    this._Items = [];
+    this._Months = [];
     this._selectedGroupStudents = {};
+    this._selectedItems = {};
+    this._selectedMonth = {};
     makeAutoObservable(this);
   }
 
@@ -69,27 +25,37 @@ export default class MaterialsContent {
     this._Months = Months;
   }
 
-  //
+  setSelectedMonths(Months) {
+    this._selectedMonth = Months;
+  }
+  setSelectedItems(Items) {
+    this._selectedItems = Items;
+  }
   setSelectedGroupStudents(GroupStudents) {
     this._selectedGroupStudents = GroupStudents;
   }
-  //
+
   get Materials() {
     return this._Materials;
   }
   get GroupStudents() {
     return this._GroupStudents;
   }
-  //
-  get selectedGroupStudents() {
-    return this._selectedGroupStudents;
-  }
-  //
 
   get Items() {
     return this._Items;
   }
   get Months() {
     return this._Months;
+  }
+
+  get selectedMonths() {
+    return this._selectedMonth;
+  }
+  get selectedItems() {
+    return this._selectedItems;
+  }
+  get selectedGroupStudents() {
+    return this._selectedGroupStudents;
   }
 }

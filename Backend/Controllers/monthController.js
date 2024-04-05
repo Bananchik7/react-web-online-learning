@@ -1,7 +1,7 @@
-const { GroupStudents } = require("../Models/models");
+const { Months } = require("../Models/models");
 const ApiError = require("../Error/ApiError");
 
-class GroupController {
+class MonthsController {
   //async create(req, res) {
   //  const { name } = req.body;
   //  const group = await GroupStudents.create({ name });
@@ -9,9 +9,9 @@ class GroupController {
   //}
 
   async getAll(req, res) {
-    const groups = await GroupStudents.findAll();
-    return res.json(groups);
+    const months = await Months.findAll();
+    return res.json(months);
   }
 }
 
-module.exports = new GroupController();
+module.exports = new MonthsController();

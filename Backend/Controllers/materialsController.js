@@ -30,17 +30,17 @@ class MaterialsController {
     }
   }
   async getAll(req, res) {
-    const { GroupID, ItemID, MonthID } = req.query;
+    const { GroupID = 1, ItemID = 1, MonthID = 1 } = req.query;
     let materials;
-    if (!GroupID && !ItemID && !MonthID) {
-      materials = await Materials.findAll({
-        where: {
-          GroupID: 1,
-          ItemID: 1,
-          MonthID: 1,
-        },
-      });
-    }
+    //if (!GroupID && !ItemID && !MonthID) {
+    materials = await Materials.findAll({
+      where: {
+        GroupID: GroupID,
+        ItemID: ItemID,
+        MonthID: MonthID,
+      },
+    });
+    //}
     return res.json(materials);
   }
   async patch(req, res) {}
