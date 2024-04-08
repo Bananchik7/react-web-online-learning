@@ -32,7 +32,6 @@ class MaterialsController {
   async getAll(req, res) {
     const { GroupID = 1, ItemID = 1, MonthID = 1 } = req.query;
     let materials;
-    //if (!GroupID && !ItemID && !MonthID) {
     materials = await Materials.findAll({
       where: {
         GroupID: GroupID,
@@ -40,11 +39,23 @@ class MaterialsController {
         MonthID: MonthID,
       },
     });
-    //}
     return res.json(materials);
   }
-  async patch(req, res) {}
-  async delete(req, res) {}
+
+  async getVideo(req, res) {
+    let video = await Materials.findAll();
+    return res.blob(video);
+  }
+
+  async delete(req, res) {
+    const { MaterialID } = req.params;
+    Materials.findOneAndDelete({
+      MaterialID,
+    });
+    return res.json({
+      success: true,
+    });
+  }
 }
 
 module.exports = new MaterialsController();

@@ -23,11 +23,18 @@ export const fetchGroup = async () => {
 
 export const fetchItem = async () => {
   const { data } = await $host.get("api/item");
-
   return data;
 };
 
 export const fetchMonth = async () => {
   const { data } = await $host.get("api/month");
   return data;
+};
+
+export const deleteMaterial = async (MaterialID) => {
+  await $host.delete("api/", {
+    params: {
+      MaterialID,
+    },
+  });
 };

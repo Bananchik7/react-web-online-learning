@@ -1,21 +1,23 @@
 import "./ContentMaterials.css";
 import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index.js";
+//import { Link } from "react-router-dom";
 import ModalAdd from "../Modals/ModalsMaterials.jsx";
 import {
   fetchMaterials,
   fetchGroup,
   fetchItem,
   fetchMonth,
+  deleteMaterial,
 } from "../../http/materialsAPI.js";
 
 export const ContentMaterials = observer(() => {
   const { material } = useContext(Context);
+  const { MaterialID } = useParams();
 
-  const handleChange = () => {
-    selectMaterials();
-  };
+  const onClickDelete = () => {};
 
   const [AddVisible, setAddVisibale] = useState(false);
 
@@ -28,6 +30,28 @@ export const ContentMaterials = observer(() => {
     });
   }, []);
 
+  function downloadVideo() {
+    fetchMaterials().then((data) => {
+      material.setMaterials(data);
+      //const blob = data.data;
+      //console.log(blob);
+      //let url = new MediaStream();
+      //let anchor = document.createElement("a");
+      //anchor.href = url;
+      //anchor.download = "";
+      //document.body.appendChild(anchor);
+      //anchor.click();
+      //window.URL.revokeObjectURL(url);
+      //const url = new MediaStream();
+      //const link = document.createElement("a");
+      //link.href = url;
+      //link.setAttribute("download", "video.mp4");
+      //document.body.appendChild(link);
+      //link.click();
+    });
+  }
+
+  // фильтр
   function selectMaterials() {
     const SelectGroupID = document.getElementById("SelectGroupID");
     const GroupID = SelectGroupID.options[SelectGroupID.selectedIndex].value;
@@ -39,6 +63,10 @@ export const ContentMaterials = observer(() => {
       material.setMaterials(data);
     });
   }
+
+  const handleChange = () => {
+    selectMaterials();
+  };
 
   return (
     <>
@@ -97,8 +125,16 @@ export const ContentMaterials = observer(() => {
             <form className="loading__form" key={item.MaterialID}>
               <div className="loading__form-name">{item.Name}</div>
               <div className="loading__form-files">
-                <div className="loading__files-video">{item.Video}</div>
+                <div onClick={downloadVideo} className="loading__files-video">
+                  {item.Video}
+                </div>
                 <div className="loading__files-pdf">{item.File}</div>
+                <button
+                  onClick={onClickDelete}
+                  className="loading__files-delete"
+                >
+                  Удалить
+                </button>
               </div>
             </form>
           ))}
