@@ -48,10 +48,9 @@ class MaterialsController {
   }
 
   async delete(req, res) {
-    const { MaterialID } = req.params;
-    Materials.findOneAndDelete({
-      MaterialID,
-    });
+    const MaterialID = req.query.MaterialID;
+    console.log(MaterialID);
+    await Materials.delete({ MaterialID: MaterialID });
     return res.json({
       success: true,
     });

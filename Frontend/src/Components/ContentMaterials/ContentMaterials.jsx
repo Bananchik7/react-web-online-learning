@@ -1,9 +1,7 @@
 import "./ContentMaterials.css";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index.js";
-//import { Link } from "react-router-dom";
 import ModalAdd from "../Modals/ModalsMaterials.jsx";
 import {
   fetchMaterials,
@@ -15,9 +13,6 @@ import {
 
 export const ContentMaterials = observer(() => {
   const { material } = useContext(Context);
-  const { MaterialID } = useParams();
-
-  const onClickDelete = () => {};
 
   const [AddVisible, setAddVisibale] = useState(false);
 
@@ -50,6 +45,13 @@ export const ContentMaterials = observer(() => {
       //link.click();
     });
   }
+
+  const onClickDeleteMaterial = (MaterialID) => {
+    console.log("1221", MaterialID);
+    deleteMaterial(material.Materials).then((data) =>
+      data.filter((item) => item.MaterialID !== MaterialID)
+    );
+  };
 
   // фильтр
   function selectMaterials() {
@@ -122,7 +124,7 @@ export const ContentMaterials = observer(() => {
         </section>
         <section className="loading__background">
           {material.Materials.map((item) => (
-            <form className="loading__form" key={item.MaterialID}>
+            <div className="loading__form" key={item.MaterialID}>
               <div className="loading__form-name">{item.Name}</div>
               <div className="loading__form-files">
                 <div onClick={downloadVideo} className="loading__files-video">
@@ -130,13 +132,13 @@ export const ContentMaterials = observer(() => {
                 </div>
                 <div className="loading__files-pdf">{item.File}</div>
                 <button
-                  onClick={onClickDelete}
+                  onClick={() => onClickDeleteMaterial(item.MaterialID)}
                   className="loading__files-delete"
                 >
                   Удалить
                 </button>
               </div>
-            </form>
+            </div>
           ))}
         </section>
         <div className="loading__button">

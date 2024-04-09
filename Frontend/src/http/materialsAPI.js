@@ -32,9 +32,5 @@ export const fetchMonth = async () => {
 };
 
 export const deleteMaterial = async (MaterialID) => {
-  await $host.delete("api/", {
-    params: {
-      MaterialID,
-    },
-  });
+  await $host.delete("api/materials/" + MaterialID);
 };
