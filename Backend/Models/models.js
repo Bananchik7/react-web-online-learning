@@ -100,6 +100,12 @@ const Grades = sequelize.define("Grades", {
     primaryKey: true,
     autoIncrement: true,
   },
+  StudentID: {
+    type: DataTypes.INTEGER,
+  },
+  ItemID: {
+    type: DataTypes.INTEGER,
+  },
   Grade: {
     type: DataTypes.INTEGER,
   },

@@ -11,7 +11,7 @@ import {
   deleteMaterial,
 } from "../../http/materialsAPI.js";
 
-export const ContentMaterials = observer(() => {
+const ContentMaterials = observer(() => {
   const { material } = useContext(Context);
 
   const [AddVisible, setAddVisibale] = useState(false);
