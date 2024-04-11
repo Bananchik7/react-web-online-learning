@@ -6,6 +6,7 @@ import UserAuth from "./Components/UserAuth.js";
 import MaterialsContent from "./Components/MaterialsInfo.js";
 import HelpClass from "./Components/HelpClass.js";
 import MagazineContent from "./Components/MagazineInfo.js";
+import TopicContent from "./Components/TopicInfo.js";
 
 export const Context = createContext(null);
 
@@ -18,6 +19,7 @@ root.render(
         material: new MaterialsContent(),
         help: new HelpClass(),
         magazine: new MagazineContent(),
+        topic: new TopicContent(),
       }}
     >
       <App />

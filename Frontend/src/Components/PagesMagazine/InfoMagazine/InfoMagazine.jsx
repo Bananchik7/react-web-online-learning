@@ -1,6 +1,11 @@
 import "./InfoMagazine.css";
+import { useContext } from "react";
+import { observer } from "mobx-react-lite";
+import { Context } from "../../../index.js";
 
-export default function InfoMagazine() {
+const InfoMagazine = observer(() => {
+  const { topic } = useContext(Context);
+
   return (
     <div className="content__info">
       <div className="content__info-subject">
@@ -8,8 +13,11 @@ export default function InfoMagazine() {
           <p className="content__info-title">Тема</p>
           <p className="content__info-date">Дата урока:</p>
           <select className="content__info-select">
-            <option>1 января</option>
-            <option>2 января</option>
+            {topic.TopicLessons.map((item) => (
+              <option key={item.TopicID} value={item.TopicID}>
+                {item.Data}
+              </option>
+            ))}
           </select>
         </div>
         <input className="content__info-input"></input>
@@ -22,4 +30,6 @@ export default function InfoMagazine() {
       </div>
     </div>
   );
-}
+});
+
+export default InfoMagazine;

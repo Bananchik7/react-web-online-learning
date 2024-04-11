@@ -1,4 +1,5 @@
 .content__table {
+  display: flex;
   padding-bottom: 2%;
   background: #f3eaff;
   padding-right: 2%;

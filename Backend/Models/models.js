@@ -18,7 +18,7 @@ const Help = sequelize.define("Help", {
   TextHelp: { type: DataTypes.STRING },
 });
 
-const Materials = sequelize.define("material", {
+const Materials = sequelize.define("Materials", {
   MaterialID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -77,23 +77,6 @@ const Months = sequelize.define("Months", {
   },
 });
 
-const TopicInfos = sequelize.define("TopicInfos", {
-  TopicInfoID: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  Topic: {
-    type: DataTypes.STRING,
-  },
-  DateTopic: {
-    type: DataTypes.DATE,
-  },
-  HomeWork: {
-    type: DataTypes.STRING,
-  },
-});
-
 const Grades = sequelize.define("Grades", {
   GradeID: {
     type: DataTypes.INTEGER,
@@ -128,6 +111,29 @@ const Students = sequelize.define("Students", {
   },
   SurName: {
     type: DataTypes.STRING,
+  },
+});
+
+const TopicLessons = sequelize.define("TopicLessons", {
+  TopicID: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  TextTopic: {
+    type: DataTypes.STRING,
+  },
+  HomeTopic: {
+    type: DataTypes.STRING,
+  },
+  GroupID: {
+    type: DataTypes.INTEGER,
+  },
+  ItemID: {
+    type: DataTypes.INTEGER,
+  },
+  Data: {
+    type: DataTypes.DATE,
   },
 });
 
@@ -168,7 +174,7 @@ module.exports = {
   GroupStudents,
   Items,
   Months,
-  TopicInfos,
   Grades,
   Students,
+  TopicLessons,
 };
