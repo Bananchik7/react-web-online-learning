@@ -1,10 +1,18 @@
 import "./InfoMagazine.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../index.js";
+import ModalAdd from "../../Modals/ModalsTopic.jsx";
 
 const InfoMagazine = observer(() => {
   const { topic } = useContext(Context);
+  const [selectedId, setSelectedId] = useState([1]);
+  const [AddVisible, setAddVisibale] = useState(false);
+
+  const handleSelectChange = (e) => {
+    console.log(e.target.value);
+    setSelectedId(e.target.value);
+  };
 
   return (
     <div className="content__info">
@@ -12,7 +20,11 @@ const InfoMagazine = observer(() => {
         <div className="content__subject-info">
           <p className="content__info-title">Тема</p>
           <p className="content__info-date">Дата урока:</p>
-          <select className="content__info-select">
+          <select
+            defaultValue={"1"}
+            onChange={handleSelectChange}
+            className="content__info-select"
+          >
             {topic.TopicLessons.map((item) => (
               <option key={item.TopicID} value={item.TopicID}>
                 {item.Data}
@@ -20,14 +32,36 @@ const InfoMagazine = observer(() => {
             ))}
           </select>
         </div>
-        <input className="content__info-input"></input>
+        {topic.TopicLessons.filter((value) => {
+          return Number(value.TopicID) === Number(selectedId);
+        }).map((item, i) => (
+          <div key={i} className="content__info-text">
+            {item.TextTopic}
+            <p> </p>
+          </div>
+        ))}
       </div>
       <div className="content__info-home">
         <div className="content__home-info">
           <p className="content__info-title">Домашнее задание</p>
         </div>
-        <input className="content__info-input"></input>
+        {topic.TopicLessons.filter((value) => {
+          return Number(value.TopicID) === Number(selectedId);
+        }).map((item, i) => (
+          <div key={i} className="content__info-text">
+            {item.HomeTopic}
+          </div>
+        ))}
       </div>
+      <div className="content__button">
+        <button
+          onClick={() => setAddVisibale(true)}
+          className="content__button-add"
+        >
+          Добавить тему
+        </button>
+      </div>
+      <ModalAdd show={AddVisible} onHide={() => setAddVisibale(false)} />
     </div>
   );
 });

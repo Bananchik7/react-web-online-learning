@@ -89,6 +89,9 @@ const Grades = sequelize.define("Grades", {
   ItemID: {
     type: DataTypes.INTEGER,
   },
+  GroupID: {
+    type: DataTypes.INTEGER,
+  },
   Grade: {
     type: DataTypes.INTEGER,
   },

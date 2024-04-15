@@ -1,8 +1,9 @@
 import { $host } from "./index";
 
-export const fetchGrades = async (ItemID) => {
+export const fetchGrades = async (GroupID, ItemID) => {
   const { data } = await $host.get("api/grades", {
     params: {
+      GroupID,
       ItemID,
     },
   });

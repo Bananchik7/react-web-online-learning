@@ -16,7 +16,7 @@
   font-size: 16px;
 }
 .content__info-select {
-  width: 10%;
+  width: 15%;
   height: 6%;
   font-size: 15px;
   text-align: center;
@@ -25,10 +25,24 @@
   color: #555555;
   font-weight: 500;
 }
-.content__info-input {
+.content__info-text {
   width: 99%;
   height: 100px;
+  background: #ffffff;
   border: 1px solid #f1f1f1;
   font-size: 18px;
   padding: 0 0 0 1%;
+}
+.content__button {
+  margin: 2% 0 0 10%;
+}
+.content__button-add {
+  width: 17%;
+  height: 35px;
+  font-weight: 600;
+  font-size: 16px;
+  background: #f8f0ff;
+  border: 1px solid #a0a0a0;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px #b4b4b4;
 }

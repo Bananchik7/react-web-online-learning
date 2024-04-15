@@ -1,5 +1,4 @@
 import ContentMagazine from "../Components/PagesMagazine/ContentMagazine/ContentMagazine";
-import HeaderMagazine from "../Components/PagesMagazine/HeaderMagazine/HeaderMagazine";
 import Menu from "../Components/Menu/Menu";
 import ContentTranslate from "../Components/ContentTranslate/ContentTranslate";
 import { useState } from "react";
@@ -18,7 +17,6 @@ export default function Home() {
         <Menu active={tab} onChange={(current) => setTab(current)} />
         {tab === "magazine" && (
           <aside className="magazine">
-            <HeaderMagazine />
             <ContentMagazine />
           </aside>
         )}

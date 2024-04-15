@@ -21,10 +21,22 @@ class TopicController {
   }
 
   async getAll(req, res) {
-    //const { ItemID = 1, GroupID = 1 } = req.query;
+    const { GroupID = 1, ItemID = 1 } = req.query;
     let topics;
-    topics = await TopicLessons.findAll();
+    topics = await TopicLessons.findAll({
+      where: {
+        GroupID: GroupID,
+        ItemID: ItemID,
+      },
+    });
     return res.json(topics);
+  }
+  async getOne(req, res) {
+    const { TopicID } = req.params;
+    const topic = await TopicLessons.findOne({
+      where: { TopicID },
+    });
+    return res.json(topic);
   }
 }
 

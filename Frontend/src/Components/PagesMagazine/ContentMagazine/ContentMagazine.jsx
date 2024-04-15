@@ -4,8 +4,15 @@ import InfoMagazine from "../InfoMagazine/InfoMagazine";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../index.js";
 import { useContext, useEffect } from "react";
-import { fetchGrades, fetchStudents } from "../../../http/magazineAPI.js";
+import {
+  fetchGrades,
+  fetchGroup,
+  fetchStudents,
+  fetchItem,
+  fetchMonth,
+} from "../../../http/magazineAPI.js";
 import { fetchTopic } from "../../../http/topicAPI.js";
+import HeaderMagazine from "../HeaderMagazine/HeaderMagazine.jsx";
 
 const ContentMagazine = observer(() => {
   const { magazine } = useContext(Context);
@@ -15,6 +22,11 @@ const ContentMagazine = observer(() => {
     fetchStudents().then((data) => {
       magazine.setStudents(data);
     });
+    fetchGroup().then((data) => {
+      magazine.setGroupStudents(data);
+    });
+    fetchItem().then((data) => magazine.setItems(data));
+    fetchMonth().then((data) => magazine.setMonths(data));
     fetchGrades().then((data) => {
       magazine.setGrades(data);
     });
@@ -25,6 +37,7 @@ const ContentMagazine = observer(() => {
 
   return (
     <section className="content__main">
+      <HeaderMagazine />
       <TableMagazine />
       <InfoMagazine />
     </section>
