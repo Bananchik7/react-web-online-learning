@@ -42,9 +42,12 @@ class MaterialsController {
     return res.json(materials);
   }
 
-  async getVideo(req, res) {
-    let video = await Materials.findAll();
-    return res.blob(video);
+  async dowloadVideo(req, res) {
+    let video = await Materials.findOne({ MaterialID: req.query.MaterialID });
+    const path = config.get(
+      __dirname + "//" + "Static" + "//" + Materials.Video
+    );
+    return res.dowload(path, Materials.Video);
   }
 
   async delete(req, res) {

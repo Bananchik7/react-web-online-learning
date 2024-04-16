@@ -127,7 +127,10 @@ const ContentMaterials = observer(() => {
             <div className="loading__form" key={item.MaterialID}>
               <div className="loading__form-name">{item.Name}</div>
               <div className="loading__form-files">
-                <div onClick={downloadVideo} className="loading__files-video">
+                <div
+                  onClick={() => downloadVideo}
+                  className="loading__files-video"
+                >
                   {item.Video}
                 </div>
                 <div className="loading__files-pdf">{item.File}</div>
