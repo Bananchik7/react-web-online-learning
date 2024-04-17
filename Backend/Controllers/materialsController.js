@@ -47,16 +47,16 @@ class MaterialsController {
     const path = config.get(
       __dirname + "//" + "Static" + "//" + Materials.Video
     );
-    return res.dowload(path, Materials.Video);
+    return res.download(path, Materials.Video);
   }
 
   async delete(req, res) {
-    const MaterialID = req.params.MaterialID;
-    console.log(MaterialID);
-    //await Materials.delete({ MaterialID: MaterialID });
-    //return res.json({
-    //  success: true,
-    //});
+    const MaterialID = req.params.id;
+    await Materials.destroy({
+      where: {
+        MaterialID: MaterialID,
+      },
+    });
   }
 }
 

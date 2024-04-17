@@ -9,6 +9,7 @@ import {
   fetchItem,
   fetchMonth,
   deleteMaterial,
+  dowloadVideo,
 } from "../../http/materialsAPI.js";
 
 const ContentMaterials = observer(() => {
@@ -26,29 +27,25 @@ const ContentMaterials = observer(() => {
   }, []);
 
   function downloadVideo() {
-    fetchMaterials().then((data) => {
-      material.setMaterials(data);
-      //const blob = data.data;
-      //console.log(blob);
-      //let url = new MediaStream();
-      //let anchor = document.createElement("a");
-      //anchor.href = url;
-      //anchor.download = "";
-      //document.body.appendChild(anchor);
-      //anchor.click();
-      //window.URL.revokeObjectURL(url);
-      //const url = new MediaStream();
-      //const link = document.createElement("a");
-      //link.href = url;
-      //link.setAttribute("download", "video.mp4");
-      //document.body.appendChild(link);
-      //link.click();
+    dowloadVideo().then((data) => {
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(data);
+      link.download = material.Video;
+      link.click();
     });
+
+    //const blob = material.blob();
+    //const downloadUrl = window.URL.createObjectURL(blob);
+    //const link = document.createElement("a");
+    //link.href = downloadUrl;
+    //link.download = material.Video;
+    //document.body.appendChild(link);
+    //link.click();
+    //link.remove();
   }
 
   const onClickDeleteMaterial = (MaterialID) => {
-    console.log("1221", MaterialID);
-    deleteMaterial(material.Materials).then((data) =>
+    deleteMaterial(MaterialID).then((data) =>
       data.filter((item) => item.MaterialID !== MaterialID)
     );
   };
@@ -128,6 +125,7 @@ const ContentMaterials = observer(() => {
               <div className="loading__form-name">{item.Name}</div>
               <div className="loading__form-files">
                 <div
+                  download
                   onClick={() => downloadVideo}
                   className="loading__files-video"
                 >

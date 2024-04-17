@@ -32,5 +32,12 @@ export const fetchMonth = async () => {
 };
 
 export const deleteMaterial = async (MaterialID) => {
-  await $host.delete("api/materials/" + MaterialID);
+  await $host.delete(`api/materials/` + MaterialID);
+};
+
+export const dowloadVideo = async (material) => {
+  const { data } = await $host.get(
+    `api/material/download?id=${material.MaterialID}`
+  );
+  return data;
 };

@@ -5,7 +5,6 @@ import { useContext, useState, useEffect } from "react";
 import { Context } from "../../index.js";
 import { fetchGroup, fetchItem, createTopics } from "../../http/topicAPI.js";
 import { observer } from "mobx-react-lite";
-import DatePicker from "react-date-picker";
 
 export const ModalAdd = observer(({ show, onHide }) => {
   const { topic } = useContext(Context);
