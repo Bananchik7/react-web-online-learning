@@ -1,10 +1,11 @@
 //import jwt from "jsonwebtoken";
 require("dotenv").config();
+const cors = require("cors");
 const express = require("express");
+const http = require("http");
 const mysql = require("mysql2");
 const sequelize = require("./db");
 const models = require("./Models/models");
-const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const router = require("./Routes/index");
 const errorHandler = require("./middleware/ErrorHandlingMiddleware");
@@ -20,38 +21,42 @@ app.use(fileUpload({}));
 app.use("/api", router);
 app.use(errorHandler);
 
-// code chat
-const server = require("http").Server(app);
-const io = require("socket.io")(server);
-const { v4: uuidV4 } = require("uuid");
-
-app.set("view engine", "ejs");
-app.use(express.static("public"));
-
-app.get("/", (req, res) => {
-  res.redirect(`/${uuidV4()}`);
-});
-
-app.get("/:room", (req, res) => {
-  res.render("room", { roomId: req.params.room });
+//
+const server = http.createServer(app);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST"],
+  },
 });
 
 io.on("connection", (socket) => {
-  socket.on("join-room", (roomId, userId) => {
-    socket.join(roomId);
-    socket.to(roomId).broadcast.emit("user-connected", userId);
+  socket.emit("me", socket.id);
 
-    socket.on("disconnect", () => {
-      socket.to(roomId).broadcast.emit("user-disconnected", userId);
+  socket.on("disconnect", () => {
+    socket.broadcast.emit("callEnded");
+  });
+
+  socket.on("callUser", (data) => {
+    io.to(data.userToCall).emit("callUser", {
+      signal: data.signalData,
+      from: data.from,
+      name: data.name,
     });
   });
+
+  socket.on("answerCall", (data) => {
+    io.to(data.to).emit("callAccepted", data.signal);
+  });
 });
+//
 
 const start = async () => {
   try {
     await sequelize.authenticate();
     await sequelize.sync();
-    app.listen(PORT, () => console.log("Server OK"));
+    server.listen(PORT, () => console.log("Server OK"));
   } catch (e) {
     console.log(e);
   }

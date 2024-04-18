@@ -2,9 +2,7 @@ import ContentMagazine from "../Components/PagesMagazine/ContentMagazine/Content
 import Menu from "../Components/Menu/Menu";
 import ContentTranslate from "../Components/ContentTranslate/ContentTranslate";
 import { useState } from "react";
-import HeaderProgress from "../Components/HeaderProgress/HeaderProgress";
 import ContentHelp from "../Components/PagesHelp/ContentHelp/ContentHelp";
-import ContentProgress from "../Components/ContentProgress/ContentProgress";
 import Header from "../Components/Header/Header";
 import ContentMaterials from "../Components/ContentMaterials/ContentMaterials";
 
@@ -28,12 +26,6 @@ export default function Home() {
         {tab === "materials" && (
           <aside className="materials">
             <ContentMaterials />
-          </aside>
-        )}
-        {tab === "progress" && (
-          <aside className="progress">
-            <HeaderProgress />
-            <ContentProgress />
           </aside>
         )}
         {tab === "help" && (

@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { fetchGrades, fetchStudents } from "../../../http/magazineAPI.js";
 import { fetchTopic } from "../../../http/topicAPI.js";
 
-const HeaderMagazine = observer(() => {
+const HeaderMagazine = observer(({ onChange }) => {
   const { magazine } = useContext(Context);
   const { topic } = useContext(Context);
 
@@ -14,8 +14,6 @@ const HeaderMagazine = observer(() => {
     const GroupID = SelectGroupID.options[SelectGroupID.selectedIndex].value;
     const SelectItemID = document.getElementById("SelectItemID");
     const ItemID = SelectItemID.options[SelectItemID.selectedIndex].value;
-    //const SelectMonthID = document.getElementById("SelectMonthID");
-    //const MonthID = SelectMonthID.options[SelectMonthID.selectedIndex].value;
     fetchGrades(GroupID, ItemID).then((data) => {
       magazine.setGrades(data);
     });
@@ -26,6 +24,15 @@ const HeaderMagazine = observer(() => {
       topic.setTopicLessons(data);
     });
   }
+
+  // передача данных для соседнего компонента по смене месяца
+  function selectMonth() {
+    const SelectMonthID = document.getElementById("SelectMonthID");
+    const MonthID = SelectMonthID.options[SelectMonthID.selectedIndex].value;
+  }
+  const handleChangeMonth = (event) => {
+    onChange(event.target.value);
+  };
 
   const handleChange = () => {
     selectGrades();
@@ -68,7 +75,7 @@ const HeaderMagazine = observer(() => {
         <select
           id="SelectMonthID"
           defaultValue={"1"}
-          onChange={handleChange}
+          onChange={handleChangeMonth}
           className="content__option-select"
         >
           {magazine.Months.map((item) => (

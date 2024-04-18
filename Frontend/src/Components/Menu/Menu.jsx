@@ -33,12 +33,6 @@ export default function Menu({ active, onChange }) {
       >
         Материалы уроков
       </ButtonMenu>
-      <ButtonMenu
-        isActive={active === "progress"}
-        onClick={() => onChange("progress")}
-      >
-        Успеваемость
-      </ButtonMenu>
       <ButtonMenu isActive={active === "help"} onClick={() => onChange("help")}>
         Поддержка
       </ButtonMenu>

@@ -3,20 +3,20 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../../../index.js";
 import "./TableMagazine.css";
 
-const TableMagazine = observer(() => {
+const TableMagazine = observer(({ value }) => {
   const { magazine } = useContext(Context);
 
-  //Date.prototype.daysInMonth = function () {
-  //  return 33 - new Date(this.getFullYear(), this.getMonth(), 33).getDate();
-  //};
-
-  //alert(new Date().daysInMonth());
-  let day = 31;
-
-  let arr = [];
-  for (let i = 1; i <= day; i++) {
-    arr.push(i);
+  // получение количества днейв месяце в зависимости от года и введннного месяца
+  function getDaysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
   }
+
+  // создание массива дат определенного месяца
+  let arrDate = [];
+  for (let i = 1; i <= getDaysInMonth(value, 2024); i++) {
+    arrDate.push(i);
+  }
+
   //arrrrrrrr[][0]=fio
   //arrrrrrrr[][1]=0...5
   //arrrrrrrr[][2]=0...5
@@ -30,8 +30,8 @@ const TableMagazine = observer(() => {
               <th></th>
               <th>Список учащихся</th>
               <th></th>
-              {arr.map((item) => (
-                <th key={item}>{item}</th>
+              {arrDate.map((date) => (
+                <th key={date}>{date}</th>
               ))}
             </tr>
           </thead>
