@@ -17,9 +17,20 @@ const TableMagazine = observer(({ value }) => {
     arrDate.push(i);
   }
 
-  //arrrrrrrr[][0]=fio
-  //arrrrrrrr[][1]=0...5
-  //arrrrrrrr[][2]=0...5
+  magazine.Students.map((item) => {
+    let arr = [];
+    for (let i = 0; i < item.length; i++) {
+      let customObject = {
+        [item.StudentID[0]]: item.StudentID[i][0],
+        [item.LastName[0]]: item.LastName[i][0],
+        [item.FirstName[0]]: item.FirstName[i][0],
+        [item.SurName[0]]: item.SurName[i][0],
+      };
+
+      arr.push(customObject);
+    }
+    console.log(arr);
+  });
 
   return (
     <>
