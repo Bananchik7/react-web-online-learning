@@ -31,13 +31,6 @@ class TopicController {
     });
     return res.json(topics);
   }
-  async getOne(req, res) {
-    const { TopicID } = req.params;
-    const topic = await TopicLessons.findOne({
-      where: { TopicID },
-    });
-    return res.json(topic);
-  }
 }
 
 module.exports = new TopicController();

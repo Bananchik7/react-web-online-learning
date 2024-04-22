@@ -14,7 +14,9 @@ const HeaderMagazine = observer(({ onChange }) => {
     const GroupID = SelectGroupID.options[SelectGroupID.selectedIndex].value;
     const SelectItemID = document.getElementById("SelectItemID");
     const ItemID = SelectItemID.options[SelectItemID.selectedIndex].value;
-    fetchGrades(GroupID, ItemID).then((data) => {
+    const SelectMonthID = document.getElementById("SelectMonthID");
+    const MonthID = SelectMonthID.options[SelectMonthID.selectedIndex].value;
+    fetchGrades(GroupID, ItemID, MonthID).then((data) => {
       magazine.setGrades(data);
     });
     fetchStudents(GroupID, ItemID).then((data) => {
@@ -26,12 +28,9 @@ const HeaderMagazine = observer(({ onChange }) => {
   }
 
   // передача данных для соседнего компонента по смене месяца
-  function selectMonth() {
-    const SelectMonthID = document.getElementById("SelectMonthID");
-    const MonthID = SelectMonthID.options[SelectMonthID.selectedIndex].value;
-  }
   const handleChangeMonth = (event) => {
     onChange(event.target.value);
+    selectGrades();
   };
 
   const handleChange = () => {

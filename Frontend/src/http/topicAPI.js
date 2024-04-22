@@ -14,10 +14,6 @@ export const fetchTopic = async (GroupID, ItemID) => {
   });
   return data;
 };
-export const fetchOneTopic = async (TopicID) => {
-  const { data } = await $host.get("api/topic" + TopicID);
-  return data;
-};
 
 export const fetchGroup = async () => {
   const { data } = await $host.get("api/group");

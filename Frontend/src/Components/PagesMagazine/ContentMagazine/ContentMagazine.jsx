@@ -46,7 +46,7 @@ const ContentMagazine = observer(() => {
     <section className="content__main">
       <HeaderMagazine onChange={handleChangeMonth} />
       <TableMagazine value={value} />
-      <InfoMagazine value={value} />
+      <InfoMagazine />
     </section>
   );
 });

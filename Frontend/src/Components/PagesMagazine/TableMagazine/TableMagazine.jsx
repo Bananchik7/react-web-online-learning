@@ -6,7 +6,7 @@ import "./TableMagazine.css";
 const TableMagazine = observer(({ value }) => {
   const { magazine } = useContext(Context);
 
-  // получение количества днейв месяце в зависимости от года и введннного месяца
+  // получение количества дней в месяце в зависимости от года и введннного месяца
   function getDaysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
   }
@@ -17,19 +17,28 @@ const TableMagazine = observer(({ value }) => {
     arrDate.push(i);
   }
 
-  magazine.Students.map((item) => {
-    let arr = [];
-    for (let i = 0; i < item.length; i++) {
-      let customObject = {
-        [item.StudentID[0]]: item.StudentID[i][0],
-        [item.LastName[0]]: item.LastName[i][0],
-        [item.FirstName[0]]: item.FirstName[i][0],
-        [item.SurName[0]]: item.SurName[i][0],
-      };
-
-      arr.push(customObject);
-    }
-    console.log(arr);
+  let arrTable = [];
+  magazine.Students.forEach((student) => {
+    let objTable = {};
+    //objTable[0] = student.LastName;
+    //objTable["LastName"] = student.LastName;
+    objTable[0] = [
+      student.LastName + " " + student.FirstName + " " + student.SurName,
+    ];
+    arrDate.forEach((day) => {
+      objTable[day] = "";
+      magazine.Grades.forEach((element) => {
+        let newDate = new Date(element.DataGrade);
+        let dd = newDate.getDate();
+        if (
+          Number(element.StudentID) === Number(student.StudentID) &&
+          dd === day
+        ) {
+          objTable[day] = element.Grade;
+        }
+      });
+    });
+    arrTable.push(objTable);
   });
 
   return (
@@ -38,22 +47,18 @@ const TableMagazine = observer(({ value }) => {
         <table className="content__main-table">
           <thead>
             <tr>
-              <th></th>
               <th>Список учащихся</th>
-              <th></th>
-              {arrDate.map((date) => (
-                <th key={date}>{date}</th>
+              {arrDate.map((day) => (
+                <th key={day}>{day}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {magazine.Students.map((item) => (
-              <tr key={item.StudentID}>
-                <td>{item.LastName}</td>
-                <td>{item.FirstName}</td>
-                <td>{item.SurName}</td>
-                {magazine.Grades.map((itemG) => (
-                  <td key={itemG.GradeID}>{itemG.Grade}</td>
+            {arrTable.map((item, index) => (
+              <tr key={index}>
+                <td key={item[0]}>{item[0]}</td>
+                {arrDate.map((day) => (
+                  <td key={day + item[0]}>{item[day]}</td>
                 ))}
               </tr>
             ))}

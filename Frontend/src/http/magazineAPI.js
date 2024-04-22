@@ -1,10 +1,11 @@
 import { $host } from "./index";
 
-export const fetchGrades = async (GroupID, ItemID) => {
+export const fetchGrades = async (GroupID, ItemID, MonthID) => {
   const { data } = await $host.get("api/grades", {
     params: {
       GroupID,
       ItemID,
+      MonthID,
     },
   });
   return data;

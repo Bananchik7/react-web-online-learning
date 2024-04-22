@@ -10,7 +10,6 @@ const InfoMagazine = observer(() => {
   const [AddVisible, setAddVisibale] = useState(false);
 
   const handleSelectChange = (e) => {
-    console.log(e.target.value);
     setSelectedId(e.target.value);
   };
 
