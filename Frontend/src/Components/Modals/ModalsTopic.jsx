@@ -3,10 +3,15 @@ import { Button, Dropdown, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useContext, useState, useEffect } from "react";
 import { Context } from "../../index.js";
-import { fetchGroup, fetchItem, createTopics } from "../../http/topicAPI.js";
+import {
+  fetchGroup,
+  fetchItem,
+  createTopics,
+  fetchMonth,
+} from "../../http/topicAPI.js";
 import { observer } from "mobx-react-lite";
 
-export const ModalAdd = observer(({ show, onHide }) => {
+export const ModalAdd = observer(({ show, onHide, valueMonth, valueGroup, valueItem }) => {
   const { topic } = useContext(Context);
   const [name, setName] = useState("");
   const [homeName, setHomeName] = useState("");
@@ -15,6 +20,7 @@ export const ModalAdd = observer(({ show, onHide }) => {
   useEffect(() => {
     fetchGroup().then((data) => topic.setGroupStudents(data));
     fetchItem().then((data) => topic.setItems(data));
+    fetchMonth().then((data) => topic.setMonths(data));
   }, []);
 
   const addTopic = () => {
@@ -22,8 +28,9 @@ export const ModalAdd = observer(({ show, onHide }) => {
     formData.append("TextTopic", name);
     formData.append("HomeTopic", homeName);
     formData.append("Data", date);
-    formData.append("GroupID", topic.selectedGroupStudents.GroupID);
-    formData.append("ItemID", topic.selectedItems.ItemID);
+    formData.append("GroupID", valueGroup);
+    formData.append("ItemID", valueItem);
+    formData.append("MonthID", valueMonth);
     createTopics(formData).then((data) => onHide());
   };
 

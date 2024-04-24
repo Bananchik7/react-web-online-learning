@@ -35,9 +35,7 @@ export const deleteMaterial = async (MaterialID) => {
   await $host.delete(`api/materials/` + MaterialID);
 };
 
-export const dowloadVideo = async (material) => {
-  const { data } = await $host.get(
-    `api/material/download?id=${material.MaterialID}`
-  );
+export const dowloadVideo = async (Video) => {
+  const { data } = await $host.get(`api/materials/`, Video);
   return data;
 };

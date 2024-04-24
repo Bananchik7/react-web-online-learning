@@ -34,3 +34,8 @@ export const fetchMonth = async () => {
   const { data } = await $host.get("api/month");
   return data;
 };
+
+export const createGrades = async (grades) => {
+  const { data } = await $host.post("api/grades", grades);
+  return data;
+};

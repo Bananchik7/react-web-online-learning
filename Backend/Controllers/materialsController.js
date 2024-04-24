@@ -43,11 +43,15 @@ class MaterialsController {
   }
 
   async dowloadVideo(req, res) {
-    let video = await Materials.findOne({ MaterialID: req.query.MaterialID });
-    const path = config.get(
-      __dirname + "//" + "Static" + "//" + Materials.Video
-    );
-    return res.download(path, Materials.Video);
+    const Video = req.query;
+    let video = await Materials.findOne({
+      where: {
+        Video: Video,
+      },
+    });
+    const path = config.get("./Static/" + video);
+    console.log(video);
+    return res.download(path, video);
   }
 
   async delete(req, res) {

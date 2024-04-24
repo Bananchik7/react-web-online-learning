@@ -93,10 +93,13 @@ const Grades = sequelize.define("Grades", {
     type: DataTypes.INTEGER,
   },
   Grade: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
   DataGrade: {
     type: DataTypes.DATE,
+  },
+  MonthID: {
+    type: DataTypes.INTEGER,
   },
 });
 
@@ -137,6 +140,9 @@ const TopicLessons = sequelize.define("TopicLessons", {
   },
   Data: {
     type: DataTypes.DATE,
+  },
+  MonthID: {
+    type: DataTypes.INTEGER,
   },
 });
 

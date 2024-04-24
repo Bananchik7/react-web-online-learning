@@ -6,7 +6,7 @@ import ModalAdd from "../../Modals/ModalsTopic.jsx";
 
 const InfoMagazine = observer(() => {
   const { topic } = useContext(Context);
-  const [selectedId, setSelectedId] = useState([1]);
+  const [selectedId, setSelectedId] = useState(1);
   const [AddVisible, setAddVisibale] = useState(false);
 
   const handleSelectChange = (e) => {
@@ -36,7 +36,6 @@ const InfoMagazine = observer(() => {
         }).map((item, i) => (
           <div key={i} className="content__info-text">
             {item.TextTopic}
-            <p> </p>
           </div>
         ))}
       </div>
@@ -56,11 +55,18 @@ const InfoMagazine = observer(() => {
         <button
           onClick={() => setAddVisibale(true)}
           className="content__button-add"
+          style={{ marginRight: "35%" }}
         >
           Добавить тему
         </button>
       </div>
-      <ModalAdd show={AddVisible} onHide={() => setAddVisibale(false)} />
+      <ModalAdd
+        show={AddVisible}
+        onHide={() => setAddVisibale(false)}
+        //valueMonth={valueMonth}
+        //valueGroup={valueGroup}
+        //valueItem={valueItem}
+      />
     </div>
   );
 });

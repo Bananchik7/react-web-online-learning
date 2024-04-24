@@ -26,22 +26,15 @@ const ContentMaterials = observer(() => {
     });
   }, []);
 
-  function downloadVideo() {
-    dowloadVideo().then((data) => {
+  function downloadVideo(Video) {
+    dowloadVideo(Video).then((data) => {
+      const video = new Blob([data], { responseType: "blob" });
       const link = document.createElement("a");
-      link.href = URL.createObjectURL(data);
-      link.download = material.Video;
+      link.href = window.URL.createObjectURL(video);
+      link.download = `${Video}.mp4`;
       link.click();
+      link.remove();
     });
-
-    //const blob = material.blob();
-    //const downloadUrl = window.URL.createObjectURL(blob);
-    //const link = document.createElement("a");
-    //link.href = downloadUrl;
-    //link.download = material.Video;
-    //document.body.appendChild(link);
-    //link.click();
-    //link.remove();
   }
 
   const onClickDeleteMaterial = (MaterialID) => {
@@ -125,8 +118,7 @@ const ContentMaterials = observer(() => {
               <div className="loading__form-name">{item.Name}</div>
               <div className="loading__form-files">
                 <div
-                  download
-                  onClick={() => downloadVideo}
+                  onClick={() => downloadVideo(item.Video)}
                   className="loading__files-video"
                 >
                   {item.Video}

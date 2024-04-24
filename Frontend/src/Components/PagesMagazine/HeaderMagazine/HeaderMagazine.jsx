@@ -19,7 +19,7 @@ const HeaderMagazine = observer(({ onChange }) => {
     fetchGrades(GroupID, ItemID, MonthID).then((data) => {
       magazine.setGrades(data);
     });
-    fetchStudents(GroupID, ItemID).then((data) => {
+    fetchStudents(GroupID).then((data) => {
       magazine.setStudents(data);
     });
     fetchTopic(GroupID, ItemID).then((data) => {
@@ -28,12 +28,19 @@ const HeaderMagazine = observer(({ onChange }) => {
   }
 
   // передача данных для соседнего компонента по смене месяца
+
+  const handleChangeItem = (event) => {
+    onChange(event.target.value);
+    selectGrades();
+  };
+
   const handleChangeMonth = (event) => {
     onChange(event.target.value);
     selectGrades();
   };
 
-  const handleChange = () => {
+  const handleChangeGroup = (event) => {
+    onChange(event.target.value);
     selectGrades();
   };
 
@@ -44,7 +51,7 @@ const HeaderMagazine = observer(({ onChange }) => {
         <select
           id="SelectItemID"
           defaultValue={"1"}
-          onChange={handleChange}
+          onChange={handleChangeItem}
           className="content__option-select"
         >
           {magazine.Items.map((item) => (
@@ -59,7 +66,7 @@ const HeaderMagazine = observer(({ onChange }) => {
         <select
           id="SelectGroupID"
           defaultValue={"1"}
-          onChange={handleChange}
+          onChange={handleChangeGroup}
           className="content__option-select"
         >
           {magazine.GroupStudents.map((item) => (

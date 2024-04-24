@@ -19,10 +19,20 @@ const ContentMagazine = observer(() => {
   const { topic } = useContext(Context);
 
   // для получения данных с соседнего компонента по смене месяца в таблице
-  const [value, setValue] = useState("");
+  const [valueGroup, setValueGroup] = useState(1);
+  const [valueItem, setValueItem] = useState(1);
+  const [valueMonth, setValueMonth] = useState(1);
 
-  const handleChangeMonth = (value) => {
-    setValue(value);
+  const handleChangeMonth = (valueMonth) => {
+    setValueMonth(valueMonth);
+  };
+
+  const handleChangeGroup = (valueGroup) => {
+    setValueGroup(valueGroup);
+  };
+
+  const handleChangeItem = (valueItem) => {
+    setValueItem(valueItem);
   };
 
   useEffect(() => {
@@ -44,8 +54,14 @@ const ContentMagazine = observer(() => {
 
   return (
     <section className="content__main">
-      <HeaderMagazine onChange={handleChangeMonth} />
-      <TableMagazine value={value} />
+      <HeaderMagazine
+        onChange={(handleChangeItem, handleChangeGroup, handleChangeMonth)}
+      />
+      <TableMagazine
+        valueItem={valueItem}
+        valueGroup={valueGroup}
+        valueMonth={valueMonth}
+      />
       <InfoMagazine />
     </section>
   );

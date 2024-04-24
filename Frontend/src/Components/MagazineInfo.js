@@ -9,7 +9,8 @@ export default class MagazineContent {
     this._Months = [];
     this._selectedGroupStudents = {};
     this._selectedItems = {};
-    this._selectedMonth = {};
+    this._selectedMonths = {};
+    this._selectedStudents = {};
     makeAutoObservable(this);
   }
   setGrades(Grades) {
@@ -28,7 +29,10 @@ export default class MagazineContent {
     this._Months = Months;
   }
   setSelectedMonths(Months) {
-    this._selectedMonth = Months;
+    this._selectedMonths = Months;
+  }
+  setSelectedStudents(Students) {
+    this._selectedStudents = Students;
   }
   setSelectedItems(Items) {
     this._selectedItems = Items;
@@ -52,10 +56,13 @@ export default class MagazineContent {
     return this._Months;
   }
   get selectedMonths() {
-    return this._selectedMonth;
+    return this._selectedMonths;
   }
   get selectedItems() {
     return this._selectedItems;
+  }
+  get selectedStudents() {
+    return this._selectedStudents;
   }
   get selectedGroupStudents() {
     return this._selectedGroupStudents;

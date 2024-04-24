@@ -118,7 +118,7 @@ export default function ContentTranslate() {
                 muted
                 ref={myVideo}
                 autoPlay
-                style={{ width: "700px" }}
+                style={{ width: "100%" }}
               />
             )}
           </div>
@@ -128,7 +128,7 @@ export default function ContentTranslate() {
                 playsInline
                 ref={userVideo}
                 autoPlay
-                style={{ width: "400px" }}
+                style={{ width: "100%" }}
               />
             ) : null}
           </div>

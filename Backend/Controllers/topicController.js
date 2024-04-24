@@ -4,7 +4,7 @@ const ApiError = require("../Error/ApiError");
 class TopicController {
   async create(req, res, next) {
     try {
-      const { TextTopic, HomeTopic, ItemID, GroupID, Data } = req.body;
+      const { TextTopic, HomeTopic, ItemID, GroupID, Data, MonthID } = req.body;
 
       const topics = await TopicLessons.create({
         TextTopic,
@@ -12,6 +12,7 @@ class TopicController {
         ItemID,
         GroupID,
         Data,
+        MonthID,
       });
 
       return res.json(topics);

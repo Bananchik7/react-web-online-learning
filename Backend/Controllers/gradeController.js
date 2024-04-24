@@ -13,6 +13,21 @@ class GradeController {
     });
     return res.json(grades);
   }
+
+  async create(req, res) {
+    const { Grade, DataGrade, StudentID, GroupID, ItemID, MonthID } = req.body;
+
+    const grades = await Grades.create({
+      Grade,
+      DataGrade,
+      StudentID,
+      GroupID,
+      ItemID,
+      MonthID,
+    });
+
+    return res.json(grades);
+  }
 }
 
 module.exports = new GradeController();

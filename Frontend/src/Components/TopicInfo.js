@@ -5,8 +5,10 @@ export default class TopicContent {
     this._TopicLessons = [];
     this._GroupStudents = [];
     this._Items = [];
+    this._Months = [];
     this._selectedGroupStudents = {};
     this._selectedItems = {};
+    this._selectedMonth = {};
     makeAutoObservable(this);
   }
 
@@ -18,6 +20,13 @@ export default class TopicContent {
   }
   setItems(Items) {
     this._Items = Items;
+  }
+  setMonths(Months) {
+    this._Months = Months;
+  }
+
+  setSelectedMonths(Months) {
+    this._selectedMonth = Months;
   }
 
   setSelectedItems(Items) {
@@ -37,7 +46,13 @@ export default class TopicContent {
   get Items() {
     return this._Items;
   }
+  get Months() {
+    return this._Months;
+  }
 
+  get selectedMonths() {
+    return this._selectedMonth;
+  }
   get selectedItems() {
     return this._selectedItems;
   }
