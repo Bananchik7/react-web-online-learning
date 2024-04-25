@@ -12,7 +12,7 @@ import {
   fetchGrades,
 } from "../../../http/magazineAPI.js";
 
-const TableMagazine = observer(({ valueMonth, valueGroup, valueItem }) => {
+const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
   const { magazine } = useContext(Context);
   const [show, setShow] = useState(false);
   const [grade, setGrade] = useState("");
@@ -26,9 +26,7 @@ const TableMagazine = observer(({ valueMonth, valueGroup, valueItem }) => {
     fetchGrades().then((data) => magazine.setGrades(data));
   }, []);
 
-  console.log(valueMonth);
-  console.log(valueItem);
-  console.log(valueGroup);
+  console.log(valueItem, valueGroup, valueMonth);
 
   const addGrade = () => {
     const formData = new FormData();
@@ -140,11 +138,12 @@ const TableMagazine = observer(({ valueMonth, valueGroup, valueItem }) => {
           />
           <Dropdown className="d-inline mx-2">
             <Dropdown.Toggle variant="secondary">
-              {magazine.selectedStudents.LastName +
-                " " +
-                magazine.selectedStudents.FirstName +
-                " " +
-                magazine.selectedStudents.SurName || "Выберите учащегося"}
+              {"Выберите учащегося" ||
+                magazine.selectedStudents.LastName +
+                  " " +
+                  magazine.selectedStudents.FirstName +
+                  " " +
+                  magazine.selectedStudents.SurName}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {magazine.Students.map((item) => (
