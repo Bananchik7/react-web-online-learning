@@ -26,8 +26,6 @@ const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
     fetchGrades().then((data) => magazine.setGrades(data));
   }, []);
 
-  console.log(valueItem, valueGroup, valueMonth);
-
   const addGrade = () => {
     const formData = new FormData();
     formData.append("StudentID", magazine.selectedStudents.StudentID);
@@ -138,12 +136,11 @@ const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
           />
           <Dropdown className="d-inline mx-2">
             <Dropdown.Toggle variant="secondary">
-              {"Выберите учащегося" ||
-                magazine.selectedStudents.LastName +
-                  " " +
-                  magazine.selectedStudents.FirstName +
-                  " " +
-                  magazine.selectedStudents.SurName}
+              {magazine.selectedStudents.LastName +
+                " " +
+                magazine.selectedStudents.FirstName +
+                " " +
+                magazine.selectedStudents.SurName || "Выберите учащегося"}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {magazine.Students.map((item) => (
