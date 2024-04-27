@@ -28,11 +28,10 @@ export default function Login() {
               name="Subject"
               type="text"
             ></textarea>
-            <p className="login__form-help">Забыли пароль?</p>
+            <button className="login__form-auth">Войти</button>
             <Link to={REGISTRATION_ROUTE}>
               <button className="login__form-regist">Регистрация</button>
             </Link>
-            <button className="login__form-auth">Войти</button>
           </form>
         </div>
       </section>

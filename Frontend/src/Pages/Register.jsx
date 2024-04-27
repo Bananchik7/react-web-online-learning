@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Register.css";
-import { LOGIN_ROUTE } from "../Utils/consts";
+import { LOGIN_ROUTE, HOME_ROUTE } from "../Utils/consts";
 
 export default function Register() {
   return (
@@ -24,37 +24,25 @@ export default function Register() {
             ></textarea>
             <p className="register__form-title">Введите Имя:</p>
             <textarea
-              className="login__password-text"
+              className="register__form-text"
               name="Subject"
               type="text"
             ></textarea>
             <p className="register__form-title">Введите Отчество:</p>
             <textarea
-              className="login__password-text"
-              name="Subject"
-              type="text"
-            ></textarea>
-            <p className="register__form-title">Название Учебного заведения:</p>
-            <textarea
-              className="login__password-text"
-              name="Subject"
-              type="text"
-            ></textarea>
-            <p className="register__form-title">Статус:</p>
-            <textarea
-              className="login__password-text"
+              className="register__form-text"
               name="Subject"
               type="text"
             ></textarea>
             <p className="register__form-title">Введите Почту:</p>
             <textarea
-              className="login__password-text"
+              className="register__form-text"
               name="Subject"
               type="text"
             ></textarea>
             <p className="register__form-title">Придумайте Пароль:</p>
             <textarea
-              className="login__password-text"
+              className="register__form-text"
               name="Subject"
               type="text"
             ></textarea>

@@ -5,11 +5,12 @@ export const createTopics = async (topic) => {
   return data;
 };
 
-export const fetchTopic = async (GroupID, ItemID) => {
+export const fetchTopic = async (GroupID, ItemID, MonthID) => {
   const { data } = await $host.get("api/topic", {
     params: {
       GroupID,
       ItemID,
+      MonthID,
     },
   });
   return data;

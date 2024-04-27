@@ -8,6 +8,15 @@ const Accounts = sequelize.define("Accounts", {
     unique: true,
   },
   PasswordAccount: { type: DataTypes.STRING },
+  LastName: {
+    type: DataTypes.STRING,
+  },
+  FirstName: {
+    type: DataTypes.STRING,
+  },
+  SurName: {
+    type: DataTypes.STRING,
+  },
 });
 
 const Help = sequelize.define("Help", {

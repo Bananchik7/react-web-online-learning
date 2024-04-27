@@ -18,37 +18,10 @@ const App = observer(() => {
         {publicRoutes.map(({ path, Component }) => (
           <Route key={path} path={path} element={<Component />} exact />
         ))}
-        <Route
-          path="*"
-          element={<Navigate to={LOGIN_ROUTE} replace={true} />}
-        />
+        <Route path="*" element={<Navigate to={LOGIN_ROUTE} />} />
       </Routes>
     </BrowserRouter>
   );
 });
 
 export default App;
-
-//export const App = observable(() => {
-//  const { user } = useContext(Context);
-//  console.log(user);
-//  return (
-//    <BrowserRouter>
-//      <Routes>
-//        {user.isAuth === true &&
-//          authRoutes.map(({ path, Component }) => (
-//            <Route key={path} path={path} element={<Component />} exact />
-//          ))}
-//        {publicRoutes.map(({ path, Component }) => (
-//          <Route key={path} path={path} element={<Component />} exact />
-//        ))}
-//        <Route
-//          path="*"
-//          element={<Navigate to={LOGIN_ROUTE} replace={true} />}
-//        />
-//      </Routes>
-//    </BrowserRouter>
-//  );
-//});
-
-//export default App;

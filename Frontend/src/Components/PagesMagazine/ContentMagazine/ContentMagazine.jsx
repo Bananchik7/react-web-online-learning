@@ -66,7 +66,7 @@ const ContentMagazine = observer(() => {
     fetchStudents(GroupID).then((data) => {
       magazine.setStudents(data);
     });
-    fetchTopic(GroupID, ItemID).then((data) => {
+    fetchTopic(GroupID, ItemID, MonthID).then((data) => {
       topic.setTopicLessons(data);
     });
   }
@@ -125,7 +125,11 @@ const ContentMagazine = observer(() => {
         valueGroup={valueGroup}
         valueMonth={valueMonth}
       />
-      <InfoMagazine />
+      <InfoMagazine
+        valueItem={valueItem}
+        valueGroup={valueGroup}
+        valueMonth={valueMonth}
+      />
     </section>
   );
 });

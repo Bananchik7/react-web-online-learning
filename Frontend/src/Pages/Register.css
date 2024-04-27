@@ -11,8 +11,8 @@
 }
 
 .register__conteiner {
-  width: 30%;
-  height: 80%;
+  width: 450px;
+  height: 715px;
   background: #f2e8ff;
   margin: 2% 0 0 33%;
   border: 1px solid #a0a0a0;
@@ -44,17 +44,18 @@
 }
 
 .register__form-text {
-  width: 70%;
-  height: 25px;
-  font-size: 20px;
+  width: 75%;
+  height: 40px;
+  font-size: 22px;
   border-radius: 20px;
   border: 1px solid #000000;
-  margin: 0 0 0 12%;
+  margin: 0 0 2% 12%;
   padding-left: 3%;
   padding-top: 1%;
   resize: none;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  box-shadow: 0 5px 5px #b4b4b4;
 }
 
 .register__form-regist {
@@ -65,8 +66,9 @@
   background: #e6ffdd;
   border: 1px solid #000000;
   border-radius: 20px;
+  box-shadow: 0 5px 5px #b4b4b4;
 }
 .register__form-regist:hover {
   cursor: pointer;
-  background: #a0a0a0;
+  background: #83ff89;
 }

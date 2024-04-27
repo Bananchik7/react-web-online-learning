@@ -4,13 +4,14 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../../../index.js";
 import ModalAdd from "../../Modals/ModalsTopic.jsx";
 
-const InfoMagazine = observer(() => {
+const InfoMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
   const { topic } = useContext(Context);
   const [selectedId, setSelectedId] = useState(1);
   const [AddVisible, setAddVisibale] = useState(false);
 
   const handleSelectChange = (e) => {
     setSelectedId(e.target.value);
+    console.log(e.target.value);
   };
 
   return (
@@ -20,7 +21,6 @@ const InfoMagazine = observer(() => {
           <p className="content__info-title">Тема</p>
           <p className="content__info-date">Дата урока:</p>
           <select
-            defaultValue={"1"}
             onChange={handleSelectChange}
             className="content__info-select"
           >
@@ -63,9 +63,9 @@ const InfoMagazine = observer(() => {
       <ModalAdd
         show={AddVisible}
         onHide={() => setAddVisibale(false)}
-        //valueMonth={valueMonth}
-        //valueGroup={valueGroup}
-        //valueItem={valueItem}
+        valueMonth={valueMonth}
+        valueGroup={valueGroup}
+        valueItem={valueItem}
       />
     </div>
   );

@@ -11,7 +11,8 @@ const generateJwt = (AccountID, LoginAccount) => {
 
 class UserController {
   async registration(req, res, next) {
-    const { LoginAccount, PasswordAccount } = req.body;
+    const { LoginAccount, PasswordAccount, LastName, FirstName, SurName } =
+      req.body;
     if (!LoginAccount || !PasswordAccount) {
       return next(ApiError.badRequest("Некорректный email или password"));
     }
@@ -25,6 +26,9 @@ class UserController {
     const user = await Accounts.create({
       LoginAccount,
       PasswordAccount: hashPassword,
+      LastName,
+      FirstName,
+      SurName,
     });
     const token = generateJwt(user.AccountID, user.LoginAccount);
     return res.json({ token });

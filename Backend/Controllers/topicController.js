@@ -22,12 +22,13 @@ class TopicController {
   }
 
   async getAll(req, res) {
-    const { GroupID = 1, ItemID = 1 } = req.query;
+    const { GroupID = 1, ItemID = 1, MonthID = 1 } = req.query;
     let topics;
     topics = await TopicLessons.findAll({
       where: {
         GroupID: GroupID,
         ItemID: ItemID,
+        MonthID: MonthID,
       },
     });
     return res.json(topics);

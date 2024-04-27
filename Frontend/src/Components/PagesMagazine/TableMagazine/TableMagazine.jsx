@@ -14,7 +14,7 @@ import {
 
 const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
   const { magazine } = useContext(Context);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState();
   const [grade, setGrade] = useState("");
   const [dataGrade, setDataGrade] = useState("");
 
@@ -34,7 +34,7 @@ const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
     formData.append("Grade", grade);
     formData.append("DataGrade", dataGrade);
     formData.append("MonthID", valueMonth);
-    createGrades(formData).then((data) => setShow(""));
+    createGrades(formData).then((data) => setShow());
   };
 
   // получение количества дней в месяце в зависимости от года и введннного месяца
@@ -136,11 +136,12 @@ const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
           />
           <Dropdown className="d-inline mx-2">
             <Dropdown.Toggle variant="secondary">
-              {magazine.selectedStudents.LastName +
-                " " +
-                magazine.selectedStudents.FirstName +
-                " " +
-                magazine.selectedStudents.SurName || "Выберите учащегося"}
+              {"Выберите учащегося" ||
+                magazine.selectedStudents.LastName +
+                  " " +
+                  magazine.selectedStudents.FirstName +
+                  " " +
+                  magazine.selectedStudents.SurName}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {magazine.Students.map((item) => (
