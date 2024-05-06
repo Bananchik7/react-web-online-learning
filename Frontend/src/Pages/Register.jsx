@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import "./Register.css";
-import { LOGIN_ROUTE, HOME_ROUTE } from "../Utils/consts";
+import { LOGIN_ROUTE } from "../Utils/consts";
 
 export default function Register() {
+  //const { user } = useContext(Context);
+
   return (
     <>
       <section className="register">

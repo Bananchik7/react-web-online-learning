@@ -1,10 +1,13 @@
 import "./Header.css";
 import ButtonExit from "../ButtonExit/ButtonExit";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Context } from "../../index.js";
+import { NavLink } from "react-router-dom";
+import { LOGIN_ROUTE } from "../../Utils/consts.js";
 
 export default function Header() {
   const { user } = useContext(Context);
+
   return (
     <header>
       <div className="header__logo">
@@ -25,7 +28,9 @@ export default function Header() {
           </p>
         </div>
         <div className="header__account-exit">
-          <ButtonExit />
+          <NavLink to={LOGIN_ROUTE}>
+            <ButtonExit onClick={() => user.setIsAuth(false)} />
+          </NavLink>
         </div>
       </div>
     </header>

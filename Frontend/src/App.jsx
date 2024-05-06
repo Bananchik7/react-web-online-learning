@@ -11,14 +11,17 @@ const App = observer(() => {
   return (
     <BrowserRouter>
       <Routes>
-        {user.isAuth === true &&
+        {user.isAuth &&
           authRoutes.map(({ path, Component }) => (
             <Route key={path} path={path} element={<Component />} exact />
           ))}
         {publicRoutes.map(({ path, Component }) => (
           <Route key={path} path={path} element={<Component />} exact />
         ))}
-        <Route path="*" element={<Navigate to={LOGIN_ROUTE} />} />
+        <Route
+          path="*"
+          element={<Navigate to={LOGIN_ROUTE} replace={true} />}
+        />
       </Routes>
     </BrowserRouter>
   );
