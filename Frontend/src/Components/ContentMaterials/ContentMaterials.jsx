@@ -9,7 +9,6 @@ import {
   fetchItem,
   fetchMonth,
   deleteMaterial,
-  dowloadVideo,
 } from "../../http/materialsAPI.js";
 
 const ContentMaterials = observer(() => {
@@ -27,16 +26,18 @@ const ContentMaterials = observer(() => {
   }, []);
 
   function downloadVideo(Video) {
-    dowloadVideo(Video).then((data) => {
-      const video = new Blob([data], { responseType: "blob" });
-      const link = document.createElement("a");
-      link.href = window.URL.createObjectURL(video);
-      link.download = `${Video}.mp4`;
-      link.click();
-      link.remove();
-    });
+    var link = document.createElement("a");
+    link.setAttribute("href", "http://localhost:3001/" + Video);
+    link.setAttribute("download", "filename");
+    link.click();
   }
 
+  function downloadFile(File) {
+    var link = document.createElement("a");
+    link.setAttribute("href", "http://localhost:3001/" + File);
+    link.setAttribute("download", "filename");
+    link.click();
+  }
   const onClickDeleteMaterial = (MaterialID) => {
     deleteMaterial(MaterialID).then((data) =>
       data.filter((item) => item.MaterialID !== MaterialID)
@@ -69,7 +70,6 @@ const ContentMaterials = observer(() => {
               <p className="content__option-title">Предмет:</p>
               <select
                 id="SelectItemID"
-                defaultValue={"1"}
                 onChange={handleChange}
                 className="content__option-select"
               >
@@ -84,7 +84,6 @@ const ContentMaterials = observer(() => {
               <p className="content__option-title">Класс:</p>
               <select
                 id="SelectGroupID"
-                defaultValue={"1"}
                 onChange={handleChange}
                 className="content__option-select"
               >
@@ -99,7 +98,6 @@ const ContentMaterials = observer(() => {
               <p className="content__option-title">Месяц:</p>
               <select
                 id="SelectMonthID"
-                defaultValue={"1"}
                 onChange={handleChange}
                 className="content__option-select"
               >
@@ -117,13 +115,33 @@ const ContentMaterials = observer(() => {
             <div className="loading__form" key={item.MaterialID}>
               <div className="loading__form-name">{item.Name}</div>
               <div className="loading__form-files">
+                <div className="loading__video">
+                  <img
+                    className="loading__video-img"
+                    src="./video.png"
+                    alt="video"
+                  ></img>
+                </div>
                 <div
                   onClick={() => downloadVideo(item.Video)}
                   className="loading__files-video"
                 >
                   {item.Video}
                 </div>
-                <div className="loading__files-pdf">{item.File}</div>
+                <div className="loading__file">
+                  <img
+                    className="loading__file-img"
+                    src="./doc.png"
+                    alt="doc"
+                  ></img>
+                </div>
+
+                <div
+                  onClick={() => downloadFile(item.File)}
+                  className="loading__files-pdf"
+                >
+                  {item.File}
+                </div>
                 <button
                   onClick={() => onClickDeleteMaterial(item.MaterialID)}
                   className="loading__files-delete"

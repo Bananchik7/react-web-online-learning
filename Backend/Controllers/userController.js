@@ -36,7 +36,7 @@ class UserController {
   async login(req, res, next) {
     const { LoginAccount, PasswordAccount } = req.body;
     const user = await Accounts.findOne({ where: { LoginAccount } });
-    if (!LoginAccount) {
+    if (!user) {
       return next(ApiError.internal("Пользователь не найден"));
     }
     let comparePassword = bcrypt.compareSync(

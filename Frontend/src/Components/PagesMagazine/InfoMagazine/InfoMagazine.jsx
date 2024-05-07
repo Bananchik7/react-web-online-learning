@@ -3,10 +3,11 @@ import { useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../index.js";
 import ModalAdd from "../../Modals/ModalsTopic.jsx";
+import { fetchTopic } from "../../../http/topicAPI.js";
 
 const InfoMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
   const { topic } = useContext(Context);
-  const [selectedId, setSelectedId] = useState(1);
+  const [selectedId, setSelectedId] = useState();
   const [AddVisible, setAddVisibale] = useState(false);
 
   const handleSelectChange = (e) => {
@@ -24,6 +25,7 @@ const InfoMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
             onChange={handleSelectChange}
             className="content__info-select"
           >
+            <option>Выберите дату</option>
             {topic.TopicLessons.map((item) => (
               <option key={item.TopicID} value={item.TopicID}>
                 {item.Data}
@@ -31,25 +33,29 @@ const InfoMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
             ))}
           </select>
         </div>
-        {topic.TopicLessons.filter((value) => {
-          return Number(value.TopicID) === Number(selectedId);
-        }).map((item, i) => (
-          <div key={i} className="content__info-text">
-            {item.TextTopic}
-          </div>
-        ))}
+        <div className="content__info-div">
+          {topic.TopicLessons.filter((value) => {
+            return Number(value.TopicID) === Number(selectedId);
+          }).map((item, i) => (
+            <div key={i} className="content__info-text">
+              {item.TextTopic}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="content__info-home">
         <div className="content__home-info">
           <p className="content__info-title">Домашнее задание</p>
         </div>
-        {topic.TopicLessons.filter((value) => {
-          return Number(value.TopicID) === Number(selectedId);
-        }).map((item, i) => (
-          <div key={i} className="content__info-text">
-            {item.HomeTopic}
-          </div>
-        ))}
+        <div className="content__info-div">
+          {topic.TopicLessons.filter((value) => {
+            return Number(value.TopicID) === Number(selectedId);
+          }).map((item, i) => (
+            <div key={i} className="content__info-text">
+              {item.HomeTopic}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="content__button">
         <button

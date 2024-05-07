@@ -1,7 +1,7 @@
 import { REGISTRATION_ROUTE, HOME_ROUTE } from "../Utils/consts";
 import { login } from "../http/userAPI";
 import "./Login.css";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { Context } from "../index.js";
 import { observer } from "mobx-react-lite";
@@ -10,16 +10,21 @@ const Login = observer(() => {
   const { user } = useContext(Context);
   const [LoginAccount, setLoginAccount] = useState("");
   const [PasswordAccount, setPasswordAccount] = useState("");
+  const [LastName, setLastName] = useState("");
+  const [FirstName, setFirstName] = useState("");
+  const [SurName, setSurName] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
-  const isLogin = location.pathname;
 
   const click = async () => {
     try {
       let data;
-      if (isLogin) {
-        data = await login(LoginAccount, PasswordAccount);
-      }
+      data = await login(
+        LoginAccount,
+        PasswordAccount,
+        LastName,
+        FirstName,
+        SurName
+      );
       user.setAccounts(user);
       user.setIsAuth(true);
       navigate(HOME_ROUTE);
@@ -42,21 +47,21 @@ const Login = observer(() => {
           <div className="login__conteiner-title">Авторизация</div>
           <form className="login__conteiner-form">
             <p className="login__form-login">Логин:</p>
-            <textarea
+            <input
               className="login__login-text"
               placeholder="Введите ваш email..."
               value={LoginAccount}
               onChange={(e) => setLoginAccount(e.target.value)}
-            ></textarea>
+            ></input>
             <p className="login__form-password">Пароль:</p>
-            <textarea
+            <input
               className="login__password-text"
               placeholder="Введите ваш пароль..."
               value={PasswordAccount}
               onChange={(e) => setPasswordAccount(e.target.value)}
               type="password"
-            ></textarea>
-            <NavLink to={HOME_ROUTE}>
+            ></input>
+            <NavLink>
               <button className="login__form-auth" onClick={click}>
                 Войти
               </button>

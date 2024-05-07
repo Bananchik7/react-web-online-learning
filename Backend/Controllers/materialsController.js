@@ -42,18 +42,6 @@ class MaterialsController {
     return res.json(materials);
   }
 
-  async dowloadVideo(req, res) {
-    const Video = req.query;
-    let video = await Materials.findOne({
-      where: {
-        Video: Video,
-      },
-    });
-    const path = config.get("./Static/" + video);
-    console.log(video);
-    return res.download(path, video);
-  }
-
   async delete(req, res) {
     const MaterialID = req.params.id;
     await Materials.destroy({

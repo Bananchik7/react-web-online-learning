@@ -136,12 +136,9 @@ const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
           />
           <Dropdown className="d-inline mx-2">
             <Dropdown.Toggle variant="secondary">
-              {"Выберите учащегося" ||
-                magazine.selectedStudents.LastName +
-                  " " +
-                  magazine.selectedStudents.FirstName +
-                  " " +
-                  magazine.selectedStudents.SurName}
+              {magazine.selectedStudents.LastName +
+                magazine.selectedStudents.FirstName +
+                magazine.selectedStudents.SurName || "Выберите учащегося"}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {magazine.Students.map((item) => (

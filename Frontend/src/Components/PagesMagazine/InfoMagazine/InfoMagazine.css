@@ -7,23 +7,28 @@
   display: flex;
 }
 .content__info-title {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 500;
   margin: 1.9% 1% 1% 0%;
 }
 .content__info-date {
   margin: 2.1% 0% 1% 5%;
-  font-size: 16px;
+  font-size: 18px;
 }
 .content__info-select {
   width: 15%;
-  height: 6%;
-  font-size: 15px;
+  height: 10%;
+  font-size: 17px;
   text-align: center;
   margin: 1.9% 1% 0% 1%;
   border-radius: 10px;
   color: #555555;
   font-weight: 500;
+}
+.content__info-div {
+  width: 99%;
+  height: 100px;
+  background: #ffffff;
 }
 .content__info-text {
   width: 99%;

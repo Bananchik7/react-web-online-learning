@@ -78,7 +78,6 @@ const ContentMagazine = observer(() => {
           <p className="content__option-title">Предмет:</p>
           <select
             id="SelectItemID"
-            defaultValue={"1"}
             onChange={handleChangeItem}
             className="content__option-select"
           >
@@ -93,7 +92,6 @@ const ContentMagazine = observer(() => {
           <p className="content__option-title">Класс:</p>
           <select
             id="SelectGroupID"
-            defaultValue={"1"}
             onChange={handleChangeGroup}
             className="content__option-select"
           >
@@ -108,7 +106,6 @@ const ContentMagazine = observer(() => {
           <p className="content__option-title">Месяц:</p>
           <select
             id="SelectMonthID"
-            defaultValue={"1"}
             onChange={handleChangeMonth}
             className="content__option-select"
           >
