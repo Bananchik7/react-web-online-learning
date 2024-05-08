@@ -4,14 +4,14 @@ import InfoMagazine from "../InfoMagazine/InfoMagazine";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../index.js";
 import { useContext, useEffect, useState } from "react";
+import { fetchGrades } from "../../../http/magazineAPI.js";
+import { fetchTopic } from "../../../http/topicAPI.js";
 import {
-  fetchGrades,
   fetchGroup,
-  fetchStudents,
   fetchItem,
   fetchMonth,
-} from "../../../http/magazineAPI.js";
-import { fetchTopic } from "../../../http/topicAPI.js";
+  fetchStudents,
+} from "../../../http/allAPI.js";
 
 const ContentMagazine = observer(() => {
   const { magazine } = useContext(Context);

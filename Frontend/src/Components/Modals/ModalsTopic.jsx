@@ -3,13 +3,9 @@ import { Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useContext, useState, useEffect } from "react";
 import { Context } from "../../index.js";
-import {
-  fetchGroup,
-  fetchItem,
-  createTopics,
-  fetchMonth,
-} from "../../http/topicAPI.js";
+import { createTopics } from "../../http/topicAPI.js";
 import { observer } from "mobx-react-lite";
+import { fetchGroup, fetchItem, fetchMonth } from "../../http/allAPI.js";
 
 export const ModalAdd = observer(
   ({ show, onHide, valueMonth, valueGroup, valueItem }) => {
@@ -22,6 +18,7 @@ export const ModalAdd = observer(
       fetchGroup().then((data) => topic.setGroupStudents(data));
       fetchItem().then((data) => topic.setItems(data));
       fetchMonth().then((data) => topic.setMonths(data));
+      //eslint-disable-next-line
     }, []);
 
     const addTopic = () => {

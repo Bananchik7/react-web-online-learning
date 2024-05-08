@@ -3,18 +3,16 @@ import { useContext, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index.js";
 import ModalAdd from "../Modals/ModalsMaterials.jsx";
-import {
-  fetchMaterials,
-  fetchGroup,
-  fetchItem,
-  fetchMonth,
-  deleteMaterial,
-} from "../../http/materialsAPI.js";
+import { fetchMaterials, deleteMaterial } from "../../http/materialsAPI.js";
+import { fetchGroup, fetchItem, fetchMonth } from "../../http/allAPI.js";
 
 const ContentMaterials = observer(() => {
   const { material } = useContext(Context);
 
   const [AddVisible, setAddVisibale] = useState(false);
+  const [valueGroup, setValueGroup] = useState(1);
+  const [valueItem, setValueItem] = useState(1);
+  const [valueMonth, setValueMonth] = useState(1);
 
   useEffect(() => {
     fetchGroup().then((data) => material.setGroupStudents(data));
@@ -23,6 +21,7 @@ const ContentMaterials = observer(() => {
     fetchMaterials().then((data) => {
       material.setMaterials(data);
     });
+    //eslint-disable-next-line
   }, []);
 
   function downloadVideo(Video) {
@@ -57,9 +56,23 @@ const ContentMaterials = observer(() => {
     });
   }
 
-  const handleChange = () => {
+  const handleChangeMonth = (valueMonth) => {
+    setValueMonth(valueMonth.target.value);
     selectMaterials();
   };
+  const handleChangeItem = (valueItem) => {
+    setValueItem(valueItem.target.value);
+    selectMaterials();
+  };
+
+  const handleChangeGroup = (valueGroup) => {
+    setValueGroup(valueGroup.target.value);
+    selectMaterials();
+  };
+
+  //const handleChange = (e) => {
+  //  selectMaterials();
+  //};
 
   return (
     <>
@@ -70,7 +83,7 @@ const ContentMaterials = observer(() => {
               <p className="content__option-title">Предмет:</p>
               <select
                 id="SelectItemID"
-                onChange={handleChange}
+                onChange={handleChangeItem}
                 className="content__option-select"
               >
                 {material.Items.map((item) => (
@@ -84,7 +97,7 @@ const ContentMaterials = observer(() => {
               <p className="content__option-title">Класс:</p>
               <select
                 id="SelectGroupID"
-                onChange={handleChange}
+                onChange={handleChangeGroup}
                 className="content__option-select"
               >
                 {material.GroupStudents.map((item) => (
@@ -98,7 +111,7 @@ const ContentMaterials = observer(() => {
               <p className="content__option-title">Месяц:</p>
               <select
                 id="SelectMonthID"
-                onChange={handleChange}
+                onChange={handleChangeMonth}
                 className="content__option-select"
               >
                 {material.Months.map((item) => (
@@ -161,7 +174,13 @@ const ContentMaterials = observer(() => {
           </button>
         </div>
       </main>
-      <ModalAdd show={AddVisible} onHide={() => setAddVisibale(false)} />
+      <ModalAdd
+        valueItem={valueItem}
+        valueGroup={valueGroup}
+        valueMonth={valueMonth}
+        show={AddVisible}
+        onHide={() => setAddVisibale(false)}
+      />
     </>
   );
 });

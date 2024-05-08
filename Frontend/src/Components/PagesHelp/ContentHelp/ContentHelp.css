@@ -50,11 +50,11 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .help__input-button {
-  width: 25%;
-  height: 25px;
+  width: 35%;
+  height: 15%;
   font-size: 14px;
   font-weight: 600;
-  margin-left: 69%;
+  margin-left: 55%;
   background: #f3eaff;
   border: 1px solid #a0a0a0;
   border-radius: 20px;

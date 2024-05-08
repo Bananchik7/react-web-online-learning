@@ -14,9 +14,10 @@
   width: 400px;
   height: 420px;
   background: #f2e8ff;
-  margin: 8% 0 0 33%;
+  margin: 8% 0 0 38%;
   border: 1px solid #a0a0a0;
   padding-bottom: 2%;
+  padding-top: 2%;
 }
 .login__conteiner-image {
   width: 35px;

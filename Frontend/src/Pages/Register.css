@@ -12,12 +12,13 @@
 
 .register__conteiner {
   width: 450px;
-  height: 715px;
+  height: 670px;
   background: #f2e8ff;
-  margin: 2% 0 0 33%;
+  margin: 2% 0 0 38%;
   border: 1px solid #a0a0a0;
   padding-bottom: 2%;
   margin-bottom: 5%;
+  padding-top: 2%;
 }
 .register__conteiner-image {
   width: 35px;

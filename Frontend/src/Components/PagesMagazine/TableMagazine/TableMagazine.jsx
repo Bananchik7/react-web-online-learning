@@ -3,14 +3,13 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../../../index.js";
 import "./TableMagazine.css";
 import { Dropdown, Form } from "react-bootstrap";
+import { createGrades, fetchGrades } from "../../../http/magazineAPI.js";
 import {
   fetchGroup,
   fetchItem,
   fetchMonth,
-  createGrades,
   fetchStudents,
-  fetchGrades,
-} from "../../../http/magazineAPI.js";
+} from "../../../http/allAPI.js";
 
 const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
   const { magazine } = useContext(Context);
@@ -137,7 +136,9 @@ const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
           <Dropdown className="d-inline mx-2">
             <Dropdown.Toggle variant="secondary">
               {magazine.selectedStudents.LastName +
+                " " +
                 magazine.selectedStudents.FirstName +
+                " " +
                 magazine.selectedStudents.SurName || "Выберите учащегося"}
             </Dropdown.Toggle>
             <Dropdown.Menu>

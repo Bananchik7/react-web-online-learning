@@ -34,13 +34,6 @@ export default function Register() {
     <>
       <section className="register">
         <div className="register__conteiner">
-          <div className="register__conteiner-image">
-            <img
-              className="register__image-close"
-              src="./button-close.png"
-              alt="close"
-            />
-          </div>
           <div className="register__conteiner-title">Регистрация</div>
           <form className="register__conteiner-form">
             <p className="register__form-title">Введите Фамилию:</p>

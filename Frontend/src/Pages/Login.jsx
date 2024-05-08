@@ -37,13 +37,6 @@ const Login = observer(() => {
     <>
       <section className="login">
         <div className="login__conteiner">
-          <div className="login__conteiner-image">
-            <img
-              className="login__image-close"
-              src="./button-close.png"
-              alt="close"
-            />
-          </div>
           <div className="login__conteiner-title">Авторизация</div>
           <form className="login__conteiner-form">
             <p className="login__form-login">Логин:</p>

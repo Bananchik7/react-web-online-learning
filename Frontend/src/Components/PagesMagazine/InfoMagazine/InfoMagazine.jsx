@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../index.js";
 import ModalAdd from "../../Modals/ModalsTopic.jsx";
-import { fetchTopic } from "../../../http/topicAPI.js";
 
 const InfoMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
   const { topic } = useContext(Context);
@@ -12,7 +11,6 @@ const InfoMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
 
   const handleSelectChange = (e) => {
     setSelectedId(e.target.value);
-    console.log(e.target.value);
   };
 
   return (
