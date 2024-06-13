@@ -1,14 +1,14 @@
 import "./Menu.css";
 import ButtonMenu from "../ButtonMenu/ButtonMenu";
-//import { Link } from "react-router-dom";
-//import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Menu({ active, onChange }) {
-  //const [menuType, setMenuType] = useState("magazine");
+  const [menuType, setMenuType] = useState("magazine");
 
-  //function handleClick(type) {
-  //  setMenuType(type);
-  //}
+  function handleClick(type) {
+    setMenuType(type);
+  }
   return (
     <section className="menu">
       <article className="menu__title">
