@@ -2,7 +2,6 @@
   "name": "react-web-online-learning",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
   "dependencies": {
     "@million/lint": "^1.0.0-rc.9",
     "@testing-library/jest-dom": "^5.17.0",

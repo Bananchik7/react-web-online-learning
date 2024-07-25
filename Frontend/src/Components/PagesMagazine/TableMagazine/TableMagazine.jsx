@@ -27,13 +27,21 @@ const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
 
   const addGrade = () => {
     const formData = new FormData();
-    formData.append("StudentID", magazine.selectedStudents.StudentID);
-    formData.append("ItemID", valueItem);
-    formData.append("GroupID", valueGroup);
-    formData.append("Grade", grade);
-    formData.append("DataGrade", dataGrade);
-    formData.append("MonthID", valueMonth);
-    createGrades(formData).then((data) => setShow());
+    if (
+      magazine.selectedStudents.StudentID !== 0 &&
+      grade !== 0 &&
+      dataGrade !== 0
+    ) {
+      formData.append("StudentID", magazine.selectedStudents.StudentID);
+      formData.append("ItemID", valueItem);
+      formData.append("GroupID", valueGroup);
+      formData.append("Grade", grade);
+      formData.append("DataGrade", dataGrade);
+      formData.append("MonthID", valueMonth);
+      createGrades(formData).then((data) => setShow());
+    } else {
+      alert("Введены не корректные данные");
+    }
   };
 
   // получение количества дней в месяце в зависимости от года и введннного месяца
@@ -130,15 +138,16 @@ const TableMagazine = observer(({ valueGroup, valueMonth, valueItem }) => {
               textAlign: "center",
             }}
             value={grade}
-            onChange={(e) => setGrade(e.target.value)}
+            onChange={(e) => {
+              setGrade(e.target.value);
+            }}
             placeholder={"Оценка"}
           />
+
           <Dropdown className="d-inline mx-2">
             <Dropdown.Toggle variant="secondary">
               {magazine.selectedStudents.LastName +
-                " " +
                 magazine.selectedStudents.FirstName +
-                " " +
                 magazine.selectedStudents.SurName || "Выберите учащегося"}
             </Dropdown.Toggle>
             <Dropdown.Menu>

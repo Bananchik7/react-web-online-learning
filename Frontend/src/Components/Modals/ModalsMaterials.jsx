@@ -30,13 +30,17 @@ export const ModalAdd = observer(
 
     const addMaterial = () => {
       const formData = new FormData();
-      formData.append("Name", name);
-      formData.append("File", file);
-      formData.append("Video", video);
-      formData.append("GroupID", valueGroup);
-      formData.append("ItemID", valueItem);
-      formData.append("MonthID", valueMonth);
-      createMaterials(formData).then((data) => onHide());
+      if (name !== 0 && file !== null && video !== null) {
+        formData.append("Name", name);
+        formData.append("File", file);
+        formData.append("Video", video);
+        formData.append("GroupID", valueGroup);
+        formData.append("ItemID", valueItem);
+        formData.append("MonthID", valueMonth);
+        createMaterials(formData).then((data) => onHide());
+      } else {
+        alert("Введены не корректные данные");
+      }
     };
 
     return (

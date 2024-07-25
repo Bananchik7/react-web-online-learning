@@ -23,13 +23,17 @@ export const ModalAdd = observer(
 
     const addTopic = () => {
       const formData = new FormData();
-      formData.append("TextTopic", name);
-      formData.append("HomeTopic", homeName);
-      formData.append("Data", date);
-      formData.append("GroupID", valueGroup);
-      formData.append("ItemID", valueItem);
-      formData.append("MonthID", valueMonth);
-      createTopics(formData).then((data) => onHide());
+      if (name !== 0 && homeName !== 0 && date !== 0) {
+        formData.append("TextTopic", name);
+        formData.append("HomeTopic", homeName);
+        formData.append("Data", date);
+        formData.append("GroupID", valueGroup);
+        formData.append("ItemID", valueItem);
+        formData.append("MonthID", valueMonth);
+        createTopics(formData).then((data) => onHide());
+      } else {
+        alert("Введены не корректные данные");
+      }
     };
 
     return (
